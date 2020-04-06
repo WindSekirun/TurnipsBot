@@ -26,7 +26,6 @@ export class Record extends BotCommand {
   matchRegex: RegExp = /\/record ([0-9]+)/;
   onceListener = async (query: TelegramBot.CallbackQuery) => {
     if (query.data == null) return;
-    console.log(query);
 
     let callbackQuery: RecordCallbackQuery = JSON.parse(query.data);
     if (callbackQuery != undefined) {
@@ -38,8 +37,6 @@ export class Record extends BotCommand {
 
       await db.recordBell(uid, kind, price);
       let recordString = await db.getRecordString(uid);
-      console.log(recordString);
-
       let controlResult = new ControlResult();
       controlResult.generateResultFile(uid, recordString);
       let fileUrl = controlResult.getUrl(uid);
@@ -47,7 +44,7 @@ export class Record extends BotCommand {
       // Keyboard object 구성
       let options = new Keyboard.SendMessageOptions();
       let button = new Keyboard.InlineKeyboardButton();
-      button.text = messages.buy_result_btn;
+      button.text = messages.result_btn;
       button.url = fileUrl;
       let buttonArray: Keyboard.InlineKeyboardButton[] = [button];
       let markup = new Keyboard.InlineKeyboardMarkup();
@@ -124,6 +121,7 @@ export class Record extends BotCommand {
 
     markup.inline_keyboard.push(buttonArray);
     options.reply_markup = markup;
+    options.reply_to_message_id = message.message_id;
 
     // callback_query 신호 추적
     bot.once('callback_query', this.onceListener);

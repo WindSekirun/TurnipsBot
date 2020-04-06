@@ -37,7 +37,7 @@ export class Buy extends BotCommand {
     // Keyboard object 구성
     let options = new Keyboard.SendMessageOptions();
     let button = new Keyboard.InlineKeyboardButton();
-    button.text = messages.buy_result_btn;
+    button.text = messages.result_btn;
     button.url = fileUrl;
     let buttonArray: Keyboard.InlineKeyboardButton[] = [button];
     let markup = new Keyboard.InlineKeyboardMarkup();
