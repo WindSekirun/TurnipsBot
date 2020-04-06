@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  turnipsbot:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    container_name: "TurnipsBot"
+    ports:
+      - "8080:80"
+    volumes:
+      - "/home/windsekirun/turnipsbotdata/:/usr/src/app/data"
+    environment:
+      - TELEGRAM_TOKEN=1098566068:AAGoXIoct82j8ROQsNmpuv9Kb_RrTXDn2gM
