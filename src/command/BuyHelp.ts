@@ -4,10 +4,11 @@ import { bot } from '../core/bot';
 import * as messages from '../json/message.json';
 import '../core/ext/String';
 
-export class Record extends BotCommand {
-  matchRegex: RegExp = /\/Record ([0-9]+)/;
+export class BuyHelp extends BotCommand {
+  matchRegex: RegExp = /\/buy/;
 
   async onMatch(message: TelegramBot.Message, match: RegExpMatchArray): Promise<void> {
-    console.log(message);
+    let returnMessage = messages.buy_fail_non_parameter;
+    bot.sendMessage(message.chat.id, returnMessage);
   }
 }

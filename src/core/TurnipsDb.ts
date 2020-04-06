@@ -43,7 +43,8 @@ export class TurnipsDb {
   async deleteUser(uid: string): Promise<User | undefined> {
     let user = await this.getUser(uid);
     if (user != undefined) {
-      this.userDao?.delete(user);
+      await this.recordDao.deleteAll({ userId: uid })
+      await this.userDao?.delete(user);
       return user;
     }
 

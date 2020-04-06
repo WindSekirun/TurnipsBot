@@ -1,8 +1,8 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { BotCommand } from '../core/botcommand';
+import { BotCommand } from '../core/Botcommand';
 import { bot } from '../core/bot';
 import * as messages from '../json/message.json';
-import '../core/ext/string';
+import '../core/ext/String';
 import { TurnipsDb } from './../core/TurnipsDb';
 
 export class Join extends BotCommand {

@@ -1,6 +1,6 @@
 import Promise = require('bluebird');
 import TelegramBot = require('node-telegram-bot-api');
-import * as settings from './env';
+import * as settings from './Env';
 
 require('dotenv').config();
 
@@ -28,5 +28,5 @@ bot.on('polling_error', (err) => {
 });
 
 // commands.ts file is generated for each run. Do not modify it manually.
-import * as commands from './commands';
+import * as commands from './Commands';
 commands.onText(bot);
