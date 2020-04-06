@@ -46,11 +46,6 @@ table td span.sp{
 	color: #666666;
 	font-size: 75%;
 }
-table th{
-	font-weight: normal;
-	text-align: center;
-	background-color: #dddddd;
-}
 table td{
 }
 
@@ -80,11 +75,6 @@ table.result th span.namiDetail{
 div.noscript{
 	font-size: 150%;
 }
-div.result,
-div.detail,
-div.debug{
-	margin-top: 30px;
-}
 div.resultCase{
 	margin-left: 20px;
 }
@@ -108,4 +98,25 @@ textarea.copipe{
 div.debug{
 	display: block;	/* 表示 */
 /*	display: none;	/* 非表示 */
+}
+
+.table td, .table th {
+    padding: .2rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table th {
+	text-align: center;
+}
+
+.table td {
+	text-align: center;
+}
+
+table th{
+	font-weight: normal;
+	text-align: center;
+	background-color: #ef9a9a;
+	color: #ffffff;
 }

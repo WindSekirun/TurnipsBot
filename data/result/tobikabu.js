@@ -29,6 +29,23 @@ FRI2 = 10;
 SAT1 = 11;
 SAT2 = 12;
 DAY_COUNT = 13;
+
+var details = new Array(
+  '',
+  '월|오전 징조',
+  '월|오후 징조',
+  '화|오전 징조',
+  '화|오후 징조',
+  '수|오전 징조',
+  '수|오후 징조',
+  '목|오전 징조',
+  '목|오후 징조',
+  '금|오전 징조',
+  '금|오전 징조',
+  '토|오전 징조',
+  '토|오후 징조'
+);
+
 // -------- const --------
 // -------- class --------
 /// 【クラス】取りうる売値の範囲
@@ -149,20 +166,7 @@ function namiDetailText(taniSPeriod1, taniLPeriod1) {
     default:
       return '';
   }
-  //	yamaTani += "［<span class='namiDetail' title='";
-  yamaTani += '［';
-  for (var i = MON1; i <= SAT2; i++) {
-    if ((i - MON1) % 2 == 0 && i > MON1) {
-      yamaTani += ',';
-    }
-    if ((taniSPeriod1 <= i && i <= taniSPeriod1 + 1) || (taniLPeriod1 <= i && i <= taniLPeriod1 + 2)) {
-      yamaTani += '谷';
-    } else {
-      yamaTani += '山';
-    }
-  }
-  //	yamaTani += "'>詳細</span>］";
-  yamaTani += '］';
+  yamaTani += '형태';
   return yamaTani;
 }
 
@@ -552,21 +556,6 @@ function checkFev3(buyL, buyU, prices) {
     _fev3SatAm,
     _fev3SatPm
   );
-  var details = new Array(
-    '',
-    '월요일 오전 징조',
-    '월요일 오후 징조',
-    '화요일 오전 징조',
-    '화요일 오후 징조',
-    '수요일 오전 징조',
-    '수요일 오후 징조',
-    '목요일 오전 징조',
-    '목요일 오후 징조',
-    '금요일 오전 징조',
-    '금요일 오전 징조',
-    '토요일 오전 징조',
-    '토요일 오후 징조'
-  );
 
   var text = '';
   for (var i = MON1; i <= SAT2; i++) {
@@ -657,21 +646,6 @@ function checkFev4(buyL, buyU, prices) {
     _fev4FriPm,
     _fev4SatAm,
     _fev4SatPm
-  );
-  var details = new Array(
-    '',
-    '월요일 오전 징조',
-    '월요일 오후 징조',
-    '화요일 오전 징조',
-    '화요일 오후 징조',
-    '수요일 오전 징조',
-    '수요일 오후 징조',
-    '목요일 오전 징조',
-    '목요일 오후 징조',
-    '금요일 오전 징조',
-    '금요일 오전 징조',
-    '토요일 오전 징조',
-    '토요일 오후 징조'
   );
 
   var text = '';
@@ -779,9 +753,9 @@ function analyze(prices) {
   var buyU = prices[SUN] && prices[SUN] > 0 ? prices[SUN] : 110;
 
   var resultText = '';
-  resultText += '<p>\n';
-  resultText += "<table class='result'><tbody>\n";
-  resultText += "<tr><th rowspan='2' colspan='2'>형태</th><th class='buy' rowspan='2'>판매가</th><th colspan='12'>매매・예측매매</th></tr>\n";
+  resultText += "<table class='table result'><tbody>\n";
+  resultText +=
+    "<tr><th rowspan='2' colspan='2'>형태</th><th class='buy' rowspan='2'>판매가</th><th colspan='12'>매매・예측매매</th></tr>\n";
   resultText +=
     '<tr><th>월AM</th><th>월PM</th><th>화AM</th><th>화PM</th><th>수AM</th><th>수PM</th><th>목AM</th><th>목PM</th><th>금AM</th><th>금PM</th><th>토AM</th><th>토PM</th></tr>\n';
   resultText += "<tr><th colspan='2'>（입력값）</th>";
@@ -798,7 +772,6 @@ function analyze(prices) {
     resultText += '</td>';
   }
   resultText += '</tr>\n';
-  resultText += "<tr><th colspan='15'> </th></tr>\n"; // 区切り線
 
   var hasResult = false;
   // 波型チェック
@@ -826,13 +799,10 @@ function analyze(prices) {
     hasResult = true;
   }
   if (!hasResult) {
-    resultText += "<tr><td colspan='15'>該当なし</td></tr>\n";
+    resultText += "<tr><td colspan='15'>결과 없음</td></tr>\n";
   }
 
   resultText += '</table></tbody>\n';
-  resultText += '</p>\n';
-  resultText += '<br />\n';
-  resultText += '</div>\n';
   return resultText;
 }
 

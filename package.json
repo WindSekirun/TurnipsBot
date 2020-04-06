@@ -28,9 +28,9 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start-js": "node built/index.js",
+    "start-js": "node built/Index.js",
     "start-local": "sh runlocal.sh",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/Index.ts",
     "build": "tsc",
     "test": "jest"
   }
