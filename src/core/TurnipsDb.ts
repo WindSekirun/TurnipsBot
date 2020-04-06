@@ -14,12 +14,13 @@ export class TurnipsDb {
   private recordDao!: BaseDAO<Record>;
 
   private constructor() {
-    this.initialize();
   }
 
   static getInstance(): TurnipsDb {
     if (!TurnipsDb.instance) {
-      TurnipsDb.instance = new TurnipsDb();
+      let instance = new TurnipsDb();
+      instance.initialize()
+      this.instance = instance;
     }
 
     return TurnipsDb.instance;
@@ -29,19 +30,18 @@ export class TurnipsDb {
     return (await this.getUser(uid)) != undefined;
   }
 
-  async joinUser(uid: string, nickname: string): Promise<User> {
+  async joinUser(uid: string, nickname: string): Promise<User | undefined> {
     let user = new User();
     user.userId = uid;
     user.nickname = nickname;
-    user = await this.userDao?.insert(user);
-
-    return user;
+    console.log(this.userDao);
+    return await this.userDao?.insert(user);
   }
 
-  async deleteUser(uid: string): Promise<Boolean> {
+  async deleteUser(uid: string): Promise<Boolean | undefined> {
     let user = await this.getUser(uid);
     if (user != undefined) {
-      this.userDao.delete(user);
+      this.userDao?.delete(user);
       return !this.existsUser(uid);
     }
 
@@ -60,7 +60,7 @@ export class TurnipsDb {
   async setNotifyUser(uid: string, state: boolean): Promise<User | undefined> {
     let user = await this.getUser(uid);
     if (user != undefined) {
-      await this.userDao.updatePartial({ notify: state });
+      await this.userDao?.updatePartial({ notify: state });
       user.notify = state;
       return user;
     }
@@ -102,14 +102,14 @@ export class TurnipsDb {
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
       record = convertToRecord(record, kind, bell);
-      record = await this.recordDao.update(record);
+      record = await this.recordDao?.update(record);
       return record;
     }
 
     return undefined;
   }
 
-  async buyTurnips(uid: string, buyPrice: string): Promise<Record> {
+  async buyTurnips(uid: string, buyPrice: string): Promise<Record | undefined> {
     let recordDate = moment().day('Sunday').format('YYYYMMDD');
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
@@ -119,13 +119,13 @@ export class TurnipsDb {
       record.userId = uid;
       record.recordDate = recordDate;
       record.buyPrice = buyPrice;
-      record = await this.recordDao.update(record);
+      record = await this.recordDao?.update(record);
     } else {
       record = new Record();
       record.userId = uid;
       record.recordDate = recordDate;
       record.buyPrice = buyPrice;
-      record = await this.recordDao.insert(record);
+      record = await this.recordDao?.insert(record);
     }
 
     return record;
@@ -157,7 +157,5 @@ export class TurnipsDb {
 
     this.userDao = new BaseDAO(User, this.sqldb);
     this.recordDao = new BaseDAO(Record, this.sqldb);
-
-    console.log(this.userDao);
   }
 }
