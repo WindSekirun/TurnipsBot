@@ -1,10 +1,11 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { BotCommand } from '../core/botcommand';
+import { BotCommand } from '../core/BotCommand';
 import { bot } from '../core/bot';
 import * as messages from '../json/message.json';
 import '../core/ext/String';
 import { TurnipsDb } from './../core/TurnipsDb';
 import { ControlResult } from './../core/ControlResult';
+import { InlineKeyboard, ReplyKeyboard, ForceReply } from 'node-telegram-keyboard-wrapper';
 
 export class Buy extends BotCommand {
   matchRegex: RegExp = /\/buy ([0-9]+)/;
@@ -33,9 +34,10 @@ export class Buy extends BotCommand {
     let fileUrl = controlResult.getUrl(userId);
 
     // Keyboard object 구성
-    
+    let inlineKeyboard = new InlineKeyboard();
+    inlineKeyboard.addRow({ text: '예측 페이지 보기' });
 
     let returnMessage = messages.buy_result.format(match[1]);
-    bot.sendMessage(chatId, returnMessage);
+    bot.sendMessage(chatId, returnMessage, inlineKeyboard.build());
   }
 }

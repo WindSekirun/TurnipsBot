@@ -1,5 +1,5 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { BotCommand } from '../core/botcommand';
+import { BotCommand } from '../core/BotCommand';
 import { bot } from '../core/bot';
 import '../core/ext/String';
 

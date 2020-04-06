@@ -3,7 +3,6 @@
 
 import TelegramBot = require('node-telegram-bot-api')
 import { Buy } from '../command/Buy';
-import { BuyHelp } from '../command/BuyHelp';
 import { Help } from '../command/Help';
 import { Join } from '../command/Join';
 import { Leave } from '../command/Leave';
@@ -14,7 +13,6 @@ import { Start } from '../command/Start';
  
 export function onText(bot: TelegramBot) {
     new Buy().textMatch(bot);
-    new BuyHelp().textMatch(bot);
     new Help().textMatch(bot);
     new Join().textMatch(bot);
     new Leave().textMatch(bot);
