@@ -7,9 +7,21 @@
   "author": "WindSekirun",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0",
+    "node-telegram-bot-api": "^0.40.0",
+    "ts-node": "^8.8.2"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.30",
+    "@types/node-telegram-bot-api": "^0.40.2",
     "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "start-js": "node built/index.js",
+    "start-local": "sh runlocal.sh",
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
   }
 }
