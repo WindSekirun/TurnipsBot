@@ -1,0 +1,403 @@
+@charset 'Shift_JIS';
+
+table.kabukaData{
+	margin: 10px 0px;
+}
+
+table.kabukaData th{
+}
+table.kabukaData td{
+	color: #333333;
+}
+
+table.kabukaData th span,
+table.kabukaData td span{
+	margin: 0px;
+	padding: 0px 2px;
+}
+
+/* -------------------------------- */
+
+/* 奇数行目 */
+table.kabukaData tr.odd{
+}
+/* 偶数行目 */
+table.kabukaData tr.even{
+	background-color: #fffcf0;
+}
+
+/* 波型 */
+table.kabukaData tr.nami{
+}
+/* ジリ貧型 */
+table.kabukaData tr.jiri{
+}
+/* ３期型 */
+table.kabukaData tr.fev3{
+}
+/* ４期型 */
+table.kabukaData tr.fev4{
+}
+/* 波型AD（谷谷/山谷/谷谷/山山/山山/山山） */
+table.kabukaData tr.namiAD{
+}
+/* 波型AE（谷谷/山山/谷谷/谷山/山山/山山） */
+table.kabukaData tr.namiAE{
+}
+/* 波型AF（谷谷/山山/山谷/谷谷/山山/山山） */
+table.kabukaData tr.namiAF{
+}
+/* 波型AG（谷谷/山山/山山/谷谷/谷山/山山） */
+table.kabukaData tr.namiAG{
+}
+/* 波型AH（谷谷/山山/山山/山谷/谷谷/山山） */
+table.kabukaData tr.namiAH{
+}
+/* 波型AI（谷谷/山山/山山/山山/谷谷/谷山） */
+table.kabukaData tr.namiAI{
+}
+/* 波型AJ（谷谷/山山/山山/山山/山谷/谷谷） */
+table.kabukaData tr.namiAJ{
+}
+/* 波型BE（山谷/谷山/谷谷/谷山/山山/山山） */
+table.kabukaData tr.namiBE{
+}
+/* 波型BF（山谷/谷山/山谷/谷谷/山山/山山） */
+table.kabukaData tr.namiBF{
+}
+/* 波型BG（山谷/谷山/山山/谷谷/谷山/山山） */
+table.kabukaData tr.namiBG{
+}
+/* 波型BH（山谷/谷山/山山/山谷/谷谷/山山） */
+table.kabukaData tr.namiBH{
+}
+/* 波型BI（山谷/谷山/山山/山山/谷谷/谷山） */
+table.kabukaData tr.namiBI{
+}
+/* 波型BJ（山谷/谷山/山山/山山/山谷/谷谷） */
+table.kabukaData tr.namiBJ{
+}
+/* 波型CF（山山/谷谷/山谷/谷谷/山山/山山） */
+table.kabukaData tr.namiCF{
+}
+/* 波型CG（山山/谷谷/山山/谷谷/谷山/山山） */
+table.kabukaData tr.namiCG{
+}
+/* 波型CH（山山/谷谷/山山/山谷/谷谷/山山） */
+table.kabukaData tr.namiCH{
+}
+/* 波型CI（山山/谷谷/山山/山山/谷谷/谷山） */
+table.kabukaData tr.namiCI{
+}
+/* 波型CJ（山山/谷谷/山山/山山/山谷/谷谷） */
+table.kabukaData tr.namiCJ{
+}
+/* 波型DG（山山/山谷/谷山/谷谷/谷山/山山） */
+table.kabukaData tr.namiDG{
+}
+/* 波型DH（山山/山谷/谷山/山谷/谷谷/山山） */
+table.kabukaData tr.namiDH{
+}
+/* 波型DI（山山/山谷/谷山/山山/谷谷/谷山） */
+table.kabukaData tr.namiDI{
+}
+/* 波型DJ（山山/山谷/谷山/山山/山谷/谷谷） */
+table.kabukaData tr.namiDJ{
+}
+/* 波型EA（谷谷/谷山/谷谷/山山/山山/山山） */
+table.kabukaData tr.namiEA{
+}
+/* 波型EH（山山/山山/谷谷/山谷/谷谷/山山） */
+table.kabukaData tr.namiEH{
+}
+/* 波型EI（山山/山山/谷谷/山山/谷谷/谷山） */
+table.kabukaData tr.namiEI{
+}
+/* 波型EJ（山山/山山/谷谷/山山/山谷/谷谷） */
+table.kabukaData tr.namiEJ{
+}
+/* 波型FA（谷谷/谷山/山谷/谷山/山山/山山） */
+table.kabukaData tr.namiFA{
+}
+/* 波型FB（山谷/谷谷/山谷/谷山/山山/山山） */
+table.kabukaData tr.namiFB{
+}
+/* 波型FI（山山/山山/山谷/谷山/谷谷/谷山） */
+table.kabukaData tr.namiFI{
+}
+/* 波型FJ（山山/山山/山谷/谷山/山谷/谷谷） */
+table.kabukaData tr.namiFJ{
+}
+/* 波型GA（谷谷/谷山/山山/谷谷/山山/山山） */
+table.kabukaData tr.namiGA{
+}
+/* 波型GB（山谷/谷谷/山山/谷谷/山山/山山） */
+table.kabukaData tr.namiGB{
+}
+/* 波型GC（山山/谷谷/谷山/谷谷/山山/山山） */
+table.kabukaData tr.namiGC{
+}
+/* 波型GJ（山山/山山/山山/谷谷/山谷/谷谷） */
+table.kabukaData tr.namiGJ{
+}
+/* 波型HA（谷谷/谷山/山山/山谷/谷山/山山） */
+table.kabukaData tr.namiHA{
+}
+/* 波型HB（山谷/谷谷/山山/山谷/谷山/山山） */
+table.kabukaData tr.namiHB{
+}
+/* 波型HC（山山/谷谷/谷山/山谷/谷山/山山） */
+table.kabukaData tr.namiHC{
+}
+/* 波型HD（山山/山谷/谷谷/山谷/谷山/山山） */
+table.kabukaData tr.namiHD{
+}
+/* 波型IA（谷谷/谷山/山山/山山/谷谷/山山） */
+table.kabukaData tr.namiIA{
+}
+/* 波型IB（山谷/谷谷/山山/山山/谷谷/山山） */
+table.kabukaData tr.namiIB{
+}
+/* 波型IC（山山/谷谷/谷山/山山/谷谷/山山） */
+table.kabukaData tr.namiIC{
+}
+/* 波型ID（山山/山谷/谷谷/山山/谷谷/山山） */
+table.kabukaData tr.namiID{
+}
+/* 波型IE（山山/山山/谷谷/谷山/谷谷/山山） */
+table.kabukaData tr.namiIE{
+}
+/* 波型JA（谷谷/谷山/山山/山山/山谷/谷山） */
+table.kabukaData tr.namiJA{
+}
+/* 波型JB（山谷/谷谷/山山/山山/山谷/谷山） */
+table.kabukaData tr.namiJB{
+}
+/* 波型JC（山山/谷谷/谷山/山山/山谷/谷山） */
+table.kabukaData tr.namiJC{
+}
+/* 波型JD（山山/山谷/谷谷/山山/山谷/谷山） */
+table.kabukaData tr.namiJD{
+}
+/* 波型JE（山山/山山/谷谷/谷山/山谷/谷山） */
+table.kabukaData tr.namiJE{
+}
+/* 波型JF（山山/山山/山谷/谷谷/山谷/谷山） */
+table.kabukaData tr.namiJF{
+}
+/* 波型KA（谷谷/谷山/山山/山山/山山/谷谷） */
+table.kabukaData tr.namiKA{
+}
+/* 波型KB（山谷/谷谷/山山/山山/山山/谷谷） */
+table.kabukaData tr.namiKB{
+}
+/* 波型KC（山山/谷谷/谷山/山山/山山/谷谷） */
+table.kabukaData tr.namiKC{
+}
+/* 波型KD（山山/山谷/谷谷/山山/山山/谷谷） */
+table.kabukaData tr.namiKD{
+}
+/* 波型KE（山山/山山/谷谷/谷山/山山/谷谷） */
+table.kabukaData tr.namiKE{
+}
+/* 波型KF（山山/山山/山谷/谷谷/山山/谷谷） */
+table.kabukaData tr.namiKF{
+}
+/* 波型KG（山山/山山/山山/谷谷/谷山/谷谷） */
+table.kabukaData tr.namiKG{
+}
+/* ３期型・月AM変調 */
+table.kabukaData tr.fev3Mon1{
+}
+/* ３期型・月PM変調 */
+table.kabukaData tr.fev3Mon2{
+}
+/* ３期型・火AM変調 */
+table.kabukaData tr.fev3Tue1{
+}
+/* ３期型・火PM変調 */
+table.kabukaData tr.fev3Tue2{
+}
+/* ３期型・水AM変調 */
+table.kabukaData tr.fev3Wed1{
+}
+/* ３期型・水PM変調 */
+table.kabukaData tr.fev3Wed2{
+}
+/* ３期型・木AM変調 */
+table.kabukaData tr.fev3Thu1{
+}
+/* ３期型・木PM変調 */
+table.kabukaData tr.fev3Thu2{
+}
+/* ４期型・月AM変調 */
+table.kabukaData tr.fev4Mon1{
+}
+/* ４期型・月PM変調 */
+table.kabukaData tr.fev4Mon2{
+}
+/* ４期型・火AM変調 */
+table.kabukaData tr.fev4Tue1{
+}
+/* ４期型・火PM変調 */
+table.kabukaData tr.fev4Tue2{
+}
+/* ４期型・水AM変調 */
+table.kabukaData tr.fev4Wed1{
+}
+/* ４期型・水PM変調 */
+table.kabukaData tr.fev4Wed2{
+}
+/* ４期型・木AM変調 */
+table.kabukaData tr.fev4Thu1{
+}
+/* ４期型・木PM変調 */
+table.kabukaData tr.fev4Thu2{
+}
+/* 該当なし */
+table.kabukaData tr.none{
+}
+
+/* 値下がりした */
+table.kabukaData td.down span{
+	font-style: italic;
+}
+/* 値上がりした */
+table.kabukaData td.up span{
+	text-decoration: underline;
+}
+/* 変わらなかった */
+table.kabukaData td.same span{
+}
+
+/* 最安値 */
+table.kabukaData td.min{
+}
+table.kabukaData td.min span{
+	background-color: #ffddee;
+}
+/* 最高値 */
+table.kabukaData td.max{
+}
+table.kabukaData td.max span{
+	background-color: #aaffff;
+}
+
+/* 谷（買値比80%以下） */
+table.kabukaData td.tani{
+}
+/* 山（買値比90～140％） */
+table.kabukaData td.yama{
+}
+/* 赤字山（買値比90～100％） */
+table.kabukaData td.redInk.yama{
+	color: #cc33ff;
+}
+/* 売値＜買値（赤字） */
+table.kabukaData td.redInk{
+	color: #ff0033;
+}
+/* 売値＞買値（黒字） */
+table.kabukaData td.blackInk{
+	color: #0033ff;
+}
+/* 売値＝買値 */
+table.kabukaData td.sameInk{
+	color: #0033ff;
+}
+
+/* 買値比80％以下 */
+table.kabukaData td.sp_u80{
+}
+/* 買値比90％以下 */
+table.kabukaData td.sp_u90{
+}
+/* 買値比40～90％ */
+table.kabukaData td.sp_40_90{
+}
+/* 買値比60～80％ */
+table.kabukaData td.sp_60_80{
+}
+/* 買値比85～90％ */
+table.kabukaData td.sp_85_90{
+}
+/* 買値比90～140％ */
+table.kabukaData td.sp_90_140{
+}
+/* 買値比140～190％ */
+table.kabukaData td.sp_140_190{
+}
+/* 買値比140～200％ */
+table.kabukaData td.sp_140_200{
+}
+/* 買値比200～600％ */
+table.kabukaData td.sp_200_600{
+}
+/* 買値比600％以上 */
+table.kabukaData td.sp_o600{
+}
+
+/* 売値が買値×閾値の境界値上 */
+table.kabukaData td.border{
+}
+/* 切り捨ての境界値上 */
+table.kabukaData td.floorBorder{
+}
+/* 四捨五入の境界値上 */
+table.kabukaData td.roundBorder{
+}
+/* 切り上げの境界値上 */
+table.kabukaData td.ceilBorder{
+}
+/* 下限の境界値より小さい */
+table.kabukaData td.underBottomBorder{
+}
+/* 下限の境界値上 */
+table.kabukaData td.bottomBorder{
+}
+/* 上限の境界値上 */
+table.kabukaData td.topBorder{
+}
+/* 上限の境界値より大きい */
+table.kabukaData td.overTopBorder{
+}
+
+/* 買値比 */
+table.kabukaData td span.sp{
+	color: #888888;
+	background-color: inherit;
+	text-decoration: none;
+	font-style: normal;
+	font-size: 75%;
+}
+
+/* -------------------------------- */
+
+table.kabukaData th.id,
+table.kabukaData td.id{
+}
+table.kabukaData th.pattern,
+table.kabukaData td.pattern{
+}
+table.kabukaData th.source,
+table.kabukaData td.source{
+	border-right: 2px solid black;
+}
+table.kabukaData th.buy,
+table.kabukaData td.buy{
+	border-left: 2px solid black;
+}
+table.kabukaData th.am,
+table.kabukaData td.am{
+	border-right: 1px dashed black;
+}
+table.kabukaData th.pm,
+table.kabukaData td.pm{
+	border-left: 1px dashed black;
+}
+table.kabukaData td.id,
+table.kabukaData td.buy,
+table.kabukaData td.am,
+table.kabukaData td.pm{
+	text-align: right;
+}
