@@ -60,6 +60,12 @@ test('Get Notify Target user', async () => {
   expect(result[0].userId).toEqual(TEST_USER_UID);
 });
 
+test('Not exists Record', async () => {
+   let db = await TurnipsDb.getInstance(filePath);
+   let result = await db.existsRecord(TEST_USER_UID);
+   expect(result).toEqual(false)
+})
+
 test('Buy turnips', async () => {
   let recordDate = moment().day('Sunday').format('YYYYMMDD');
   let db = await TurnipsDb.getInstance(filePath);
@@ -67,6 +73,12 @@ test('Buy turnips', async () => {
   expect(result?.userId).toEqual(TEST_USER_UID);
   expect(result?.recordDate).toEqual(recordDate);
   expect(result?.buyPrice).toEqual('94');
+});
+
+test('Exists Record', async () => {
+  let db = await TurnipsDb.getInstance(filePath);
+  let result = await db.existsRecord(TEST_USER_UID);
+  expect(result).toEqual(true);
 });
 
 test('Record bell', async () => {

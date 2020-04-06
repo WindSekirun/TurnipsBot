@@ -25,7 +25,7 @@ export class Buy extends BotCommand {
     }
 
     // 구매 가격 레코드
-    let record = await db.buyTurnips(userId, match[1]);
+    await db.buyTurnips(userId, match[1]);
     let recordString = await db.getRecordString(userId);
     console.log(recordString)
 

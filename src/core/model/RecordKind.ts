@@ -1,18 +1,18 @@
 import { Record } from './Record';
 
 export enum RecordKind {
-  MON_AM,
-  MON_PM,
-  TUE_AM,
-  TUE_PM,
-  WED_AM,
-  WED_PM,
-  THU_AM,
-  THU_PM,
-  FRI_AM,
-  FRI_PM,
-  SAT_AM,
-  SAT_PM,
+  MON_AM = '월요일 오전',
+  MON_PM = '월요일 오후',
+  TUE_AM = '화요일 오전',
+  TUE_PM = '화요일 오후',
+  WED_AM = '수요일 오전',
+  WED_PM = '수요일 오후',
+  THU_AM = '목요일 오전',
+  THU_PM = '목요일 오후',
+  FRI_AM = '금요일 오전',
+  FRI_PM = '금요일 오후',
+  SAT_AM = '토요일 오전',
+  SAT_PM = '토요일 오후',
 }
 
 export function convertToRecord(record: Record, kind: RecordKind, bell: string) {

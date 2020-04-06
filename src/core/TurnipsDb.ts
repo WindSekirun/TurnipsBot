@@ -31,9 +31,9 @@ export class TurnipsDb {
 
   async joinUser(uid: string, nickname: string): Promise<User | undefined> {
     if (await this.existsUser(uid)) {
-      return this.getUser(uid)
+      return this.getUser(uid);
     }
-    
+
     let user = new User();
     user.userId = uid;
     user.nickname = nickname;
@@ -43,7 +43,9 @@ export class TurnipsDb {
   async deleteUser(uid: string): Promise<User | undefined> {
     let user = await this.getUser(uid);
     if (user != undefined) {
-      await this.recordDao.deleteAll({ userId: uid })
+      if (await this.existsRecordByUser(uid)) {
+        await this.recordDao.deleteAll({ userId: uid });
+      }
       await this.userDao?.delete(user);
       return user;
     }
@@ -96,6 +98,17 @@ export class TurnipsDb {
     return record;
   }
 
+  async existsRecord(uid: string): Promise<Boolean> {
+    let recordDate = moment().day('Sunday').format('YYYYMMDD');
+    let record = await this.getRecord(uid, recordDate);
+    return record != undefined;
+  }
+
+  async existsRecordByUser(uid: string): Promise<Boolean> {
+    let records = (await this.recordDao?.selectAll({ userId: uid })) ?? [];
+    return records.length > 0;
+  }
+
   async recordBell(uid: string, kind: RecordKind, bell: string): Promise<Record | undefined> {
     let recordDate = moment().day('Sunday').format('YYYYMMDD');
     let record = await this.getRecord(uid, recordDate);
@@ -112,7 +125,7 @@ export class TurnipsDb {
     let recordDate = moment().day('Sunday').format('YYYYMMDD');
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
-      let result = `const priceArray = ["${record.buyPrice}", "${record.monAm}", "${record.monPm}", "${record.tueAm}", "${record.tuePm}", "${record.wedAm}", "${record.wedPm}", "${record.thuAm}", "${record.thuPm}", "${record.friAm}", "${record.friPm}", "${record.satAm}", "${record.satPm}"]`
+      let result = `const priceArray = ["${record.buyPrice}", "${record.monAm}", "${record.monPm}", "${record.tueAm}", "${record.tuePm}", "${record.wedAm}", "${record.wedPm}", "${record.thuAm}", "${record.thuPm}", "${record.friAm}", "${record.friPm}", "${record.satAm}", "${record.satPm}"]`;
       return result;
     }
 
@@ -145,6 +158,6 @@ export class TurnipsDb {
     this.userDao = new BaseDAO(User, this.sqldb);
     this.recordDao = new BaseDAO(Record, this.sqldb);
 
-    console.log("Database initialized!")
+    console.log('Database initialized!');
   }
 }
