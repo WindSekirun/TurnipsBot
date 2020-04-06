@@ -7,7 +7,7 @@ import '../core/ext/string';
 export class Record extends BotCommand {
   matchRegex: RegExp = /\/Record ([0-9]+)/;
 
-  onMatch(message: TelegramBot.Message, match: RegExpMatchArray): void {
+  async onMatch(message: TelegramBot.Message, match: RegExpMatchArray): Promise<void> {
     console.log(message);
   }
 }

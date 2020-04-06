@@ -7,7 +7,7 @@ import '../core/ext/string';
 export class Notify extends BotCommand {
   matchRegex: RegExp = /\/notify/;
 
-  onMatch(message: TelegramBot.Message, match: RegExpMatchArray): void {
+  async onMatch(message: TelegramBot.Message, match: RegExpMatchArray): Promise<void> {
     console.log(message);
   }
 }

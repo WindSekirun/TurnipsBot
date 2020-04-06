@@ -5,6 +5,7 @@ import TelegramBot = require('node-telegram-bot-api')
 import { Buy } from '../command/buy';
 import { Help } from '../command/help';
 import { Join } from '../command/join';
+import { Leave } from '../command/leave';
 import { Notify } from '../command/notify';
 import { Record } from '../command/record';
 import { Result } from '../command/result';
@@ -14,6 +15,7 @@ export function onText(bot: TelegramBot) {
     new Buy().textMatch(bot);
     new Help().textMatch(bot);
     new Join().textMatch(bot);
+    new Leave().textMatch(bot);
     new Notify().textMatch(bot);
     new Record().textMatch(bot);
     new Result().textMatch(bot);

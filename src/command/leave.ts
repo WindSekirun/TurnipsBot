@@ -5,8 +5,8 @@ import * as messages from '../json/message.json';
 import '../core/ext/string';
 import { TurnipsDb } from './../core/TurnipsDb';
 
-export class Join extends BotCommand {
-  matchRegex: RegExp = /\/join/;
+export class Leave extends BotCommand {
+  matchRegex: RegExp = /\/leave/;
 
   async onMatch(message: TelegramBot.Message, match: RegExpMatchArray): Promise<void> {
     let db = await TurnipsDb.getInstance();
@@ -16,12 +16,12 @@ export class Join extends BotCommand {
 
     let exists = await db.existsUser(userId);
     if (exists) {
-      let returnMessage = messages.join_fail_exists.format(userName);
+      await db.deleteUser(userId);
+      let returnMessage = messages.leave_result.format(userName);
       bot.sendMessage(chatId, returnMessage);
     } else {
-      await db.joinUser(userId, userName);
-      let returnMessage = messages.join_result.format(userName);
-      bot.sendMessage(message.chat.id, returnMessage);
+      let returnMessage = messages.leave_fail_non_exists.format(userName);
+      bot.sendMessage(chatId, returnMessage);
     }
   }
 }
