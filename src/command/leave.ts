@@ -4,6 +4,7 @@ import { bot } from '../core/bot';
 import * as messages from '../json/message.json';
 import '../core/ext/String';
 import { TurnipsDb } from './../core/TurnipsDb';
+import { ControlResult } from '../core/ControlResult';
 
 export class Leave extends BotCommand {
   matchRegex: RegExp = /\/leave/;
@@ -23,7 +24,9 @@ export class Leave extends BotCommand {
     }
 
     // Result 파일 제거하기
-    
+    let controlResult = new ControlResult();
+    controlResult.removeResultFile(userId);
+
     // 유저 & Record 제거하기
     await db.deleteUser(userId);
     let returnMessage = messages.leave_result.format(userName);

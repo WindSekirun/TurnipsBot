@@ -4,6 +4,7 @@ import fs from 'fs';
 export class ControlResult {
   private indexPathRelative: string = '../../data/result/index.html';
   private basicPath: string = '../../data/result/';
+  webPath: string = 'https://turnips.uzuki.live/';
 
   removeResultFile(uid: string) {
     const filePathRelative = this.basicPath + `${uid}.html`;
@@ -21,7 +22,19 @@ export class ControlResult {
     }
 
     const indexPath = path.resolve(__dirname, this.indexPathRelative);
-    fs.copyFileSync(indexPath, filePath) // index 파일 복사
-    
+    fs.copyFileSync(indexPath, filePath); // index 파일 복사
+    fs.readFile(filePath, 'utf8', function (err, data) {
+      if (err) {
+        return console.log(err);
+      }
+      var result = data.replace(/const priceArray = ['', '', '', '', '', '', '', '', '', '', '', '', ''];/g, resultCode);
+      fs.writeFile(indexPath, result, 'utf8', function (err) {
+        if (err) return console.log(err);
+      });
+    });
+  }
+
+  getUrl(uid: string): string {
+    return this.webPath + `/data/result/${uid}.html`;
   }
 }
