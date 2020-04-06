@@ -1,5 +1,5 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { bot } from './bot';
+import { bot } from './Bot';
 import * as settings from './Env';
 
 let callbackQueryListener = null;

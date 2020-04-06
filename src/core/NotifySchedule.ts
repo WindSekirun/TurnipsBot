@@ -19,6 +19,8 @@ export class NotifySchedule {
     const fri2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 5 }, () => this.sendTurnipPrice(bot, true));
     const sat1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 6 }, () => this.sendTurnipPrice(bot, true));
     const sat2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 6 }, () => this.sendTurnipPrice(bot, true));
+
+    console.log('Scheduled job!')
     
     let jobArray: schedule.Job[] = [sundayBuyJob, sundayRecordJob, mon1Job, mon2Job, tue1Job, tue2Job, wed1Job, wed2Job, thu1Job, thu2Job, fri1Job, fri2Job, sat1Job, sat2Job]
     return jobArray
