@@ -1,0 +1,16 @@
+import { table, id, field, index, fk, FieldOpts, TableOpts } from 'sqlite3orm';
+
+@table({ name: 'USERS', autoIncrement: true })
+export class User {
+  @field({ name: 'id', dbtype: 'INTEGER NOT NULL' })
+  id: number = 0;
+
+  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL' })
+  userId: string = '';
+
+  @field({ name: 'user_nickname', dbtype: 'TEXT NOT NULL' })
+  nickname: string = '';
+
+  @field({ name: 'user_notify' })
+  notify: boolean = true;
+}
