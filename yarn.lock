@@ -1382,11 +1382,6 @@ depd@^1.1.1:
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
-deprecate@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/deprecate/-/deprecate-1.1.1.tgz#4632e981fc815eeaf00be945a40359c0f8bf9913"
-  integrity sha512-ZGDXefq1xknT292LnorMY5s8UVU08/WKdzDZCUT6t9JzsiMSP4uzUhgpqugffNVcT5WC6wMBiSQ+LFjlv3v7iQ==
-
 detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
@@ -3431,13 +3426,6 @@ node-telegram-bot-api@^0.40.0:
     pump "^2.0.0"
     request "^2.83.0"
     request-promise "^4.2.2"
-
-node-telegram-keyboard-wrapper@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/node-telegram-keyboard-wrapper/-/node-telegram-keyboard-wrapper-2.0.1.tgz#8cf79cb188be29ab379e3ca89558d60ae10d6f63"
-  integrity sha512-sRuYzgpE8K2ipmfxgzzibggpPs4zZIO4JCfiYh6UAt9YTjev3FDmaMBc04tnANK5qN34Y6SO+imRiYQGJhngLg==
-  dependencies:
-    deprecate "^1.1.0"
 
 nopt@^4.0.1:
   version "4.0.3"

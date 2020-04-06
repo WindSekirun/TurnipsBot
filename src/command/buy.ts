@@ -5,7 +5,7 @@ import * as messages from '../json/message.json';
 import '../core/ext/String';
 import { TurnipsDb } from './../core/TurnipsDb';
 import { ControlResult } from './../core/ControlResult';
-import { InlineKeyboard, ReplyKeyboard, ForceReply } from 'node-telegram-keyboard-wrapper';
+import * as Keyboard from '../core/Keyboard';
 
 export class Buy extends BotCommand {
   matchRegex: RegExp = /\/buy ([0-9]+)/;
@@ -27,6 +27,7 @@ export class Buy extends BotCommand {
     // 구매 가격 레코드
     let record = await db.buyTurnips(userId, match[1]);
     let recordString = await db.getRecordString(userId);
+    console.log(recordString)
 
     // Result 파일 작성하기
     let controlResult = new ControlResult();
@@ -34,10 +35,18 @@ export class Buy extends BotCommand {
     let fileUrl = controlResult.getUrl(userId);
 
     // Keyboard object 구성
-    let inlineKeyboard = new InlineKeyboard();
-    inlineKeyboard.addRow({ text: '예측 페이지 보기' });
+    let options = new Keyboard.SendMessageOptions();
+    let button = new Keyboard.InlineKeyboardButton();
+    button.text = messages.buy_result_btn;
+    button.url = fileUrl;
+    let buttonArray: Keyboard.InlineKeyboardButton[] = [button];
+    let markup = new Keyboard.InlineKeyboardMarkup();
+    markup.inline_keyboard = [];
+    markup.inline_keyboard.push(buttonArray);
+    options.reply_markup = markup;
 
+    // 사용자 반환
     let returnMessage = messages.buy_result.format(match[1]);
-    bot.sendMessage(chatId, returnMessage, inlineKeyboard.build());
+    bot.sendMessage(chatId, returnMessage, options);
   }
 }

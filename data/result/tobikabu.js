@@ -755,7 +755,7 @@ function analyze(prices) {
   var resultText = '';
   resultText += "<table class='table result'><tbody>\n";
   resultText +=
-    "<tr><th rowspan='2' colspan='2'>형태</th><th class='buy' rowspan='2'>판매가</th><th colspan='12'>매매・예측매매</th></tr>\n";
+    "<tr><th rowspan='2' colspan='2'>형태</th><th class='buy' rowspan='2'>구매가격</th><th colspan='12'>매매・예측매매</th></tr>\n";
   resultText +=
     '<tr><th>월AM</th><th>월PM</th><th>화AM</th><th>화PM</th><th>수AM</th><th>수PM</th><th>목AM</th><th>목PM</th><th>금AM</th><th>금PM</th><th>토AM</th><th>토PM</th></tr>\n';
   resultText += "<tr><th colspan='2'>（입력값）</th>";

@@ -144,5 +144,7 @@ export class TurnipsDb {
 
     this.userDao = new BaseDAO(User, this.sqldb);
     this.recordDao = new BaseDAO(Record, this.sqldb);
+
+    console.log("Database initialized!")
   }
 }
