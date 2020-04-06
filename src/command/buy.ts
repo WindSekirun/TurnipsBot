@@ -1,7 +1,7 @@
 import TelegramBot = require('node-telegram-bot-api');
 import { BotCommand } from '../core/BotCommand';
-import { bot } from '../core/bot';
-import * as messages from '../json/message.json';
+import { bot } from '../core/Bot';
+import * as messages from '../json/Message.json';
 import '../core/ext/String';
 import { TurnipsDb } from './../core/TurnipsDb';
 import { ControlResult } from './../core/ControlResult';
