@@ -2,10 +2,10 @@ import { table, id, field, index, fk, FieldOpts, TableOpts } from 'sqlite3orm';
 
 @table({ name: 'USERS', autoIncrement: true })
 export class User {
-  @field({ name: 'id', dbtype: 'INTEGER NOT NULL' })
+  @id({ name: 'id', dbtype: 'INTEGER NOT NULL' })
   id: number = 0;
 
-  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL' })
+  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL UNIQUE' })
   userId: string = '';
 
   @field({ name: 'user_nickname', dbtype: 'TEXT NOT NULL' })

@@ -2,11 +2,10 @@ import { table, id, field, index, fk, FieldOpts, TableOpts } from 'sqlite3orm';
 
 @table({ name: 'RECORDS' })
 export class Record {
-  @field({ name: 'id', dbtype: 'INTEGER NOT NULL' })
+  @id({ name: 'id', dbtype: 'INTEGER NOT NULL' })
   id: number = 0;
 
-  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL' })
-  @fk('fk_user_id', 'USERS', 'user_id')
+  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL UNIQUE' })
   userId: string = '';
 
   @field({ name: 'record_id', dbtype: 'TEXT NOT NULL' })
