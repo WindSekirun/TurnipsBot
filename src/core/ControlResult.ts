@@ -35,6 +35,6 @@ export class ControlResult {
   }
 
   getUrl(uid: string): string {
-    return this.webPath + `/data/result/${uid}.html`;
+    return this.webPath + `${uid}.html`;
   }
 }
