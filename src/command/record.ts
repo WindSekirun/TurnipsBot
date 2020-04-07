@@ -11,16 +11,14 @@ import { RecordKind } from '../core/model/RecordKind';
 class RecordCallbackQuery {
   k: RecordKind = RecordKind.MON_AM;
   u: string = '';
-  c: number = 0;
   p: string = '';
-  e: boolean = false;
+  e: number = 0;
 
-  constructor(kind: RecordKind, uid: string, cid: number, price: string, enabled: boolean) {
+  constructor(kind: RecordKind, uid: string,  price: string, enabled: boolean) {
     this.k = kind;
     this.u = uid;
-    this.c = cid;
     this.p = price;
-    this.e = enabled;
+    this.e = enabled ? 1 : 0;
   }
 }
 
@@ -33,15 +31,14 @@ export class Record extends BotCommand {
     if (callbackQuery != undefined) {
       let db = await TurnipsDb.getInstance();
       let uid = callbackQuery.u;
-      let cid = callbackQuery.c;
       let kind = callbackQuery.k;
       let price = callbackQuery.p;
       let enabled = callbackQuery.e;
 
-      if (!enabled) {
+      if (enabled != 1) {
         // remove message when received callback query
         if (query.message?.message_id != undefined) {
-          await bot.deleteMessage(cid, query.message?.message_id + '');
+          await bot.deleteMessage(uid, query.message?.message_id + '');
         }
         return;
       }
@@ -65,20 +62,20 @@ export class Record extends BotCommand {
 
       // 사용자 반환
       let returnMessage = messages.record_result.format(kind, price);
-      bot.sendMessage(cid, returnMessage, options);
+      bot.sendMessage(uid, returnMessage, options);
       console.log(`User ${uid} Record turnips by ${price} in ${kind}, recordString: ${recordString}`);
 
       // remove message when received callback query
       if (query.message?.message_id != undefined) {
-        await bot.deleteMessage(cid, query.message?.message_id + '');
+        await bot.deleteMessage(uid, query.message?.message_id + '');
       }
     }
   };
 
-  private generateButton(item: RecordKind, userId: string, chatId: number, price: string, enabled: boolean): Keyboard.InlineKeyboardButton {
+  private generateButton(item: RecordKind, userId: string, price: string, enabled: boolean): Keyboard.InlineKeyboardButton {
     let button = new Keyboard.InlineKeyboardButton();
     button.text = item;
-    button.callback_data = JSON.stringify(new RecordCallbackQuery(item, userId, chatId, price, enabled));
+    button.callback_data = JSON.stringify(new RecordCallbackQuery(item, userId, price, enabled));
     return button;
   }
 
@@ -108,40 +105,39 @@ export class Record extends BotCommand {
 
     // Kind를 선택하기 위해 키보드를 구성
     let cancelButon = new Keyboard.InlineKeyboardButton();
-    cancelButon.text = '취소하기';
-    cancelButon.callback_data = JSON.stringify(new RecordCallbackQuery(RecordKind.NONE, userId, chatId, price, false));
-
+    cancelButon.text = messages.record_select_cancel;
+    cancelButon.callback_data = JSON.stringify(new RecordCallbackQuery(RecordKind.NONE, userId, price, false));
+  
     let options = new Keyboard.SendMessageOptions();
-    let buttonArray: Keyboard.InlineKeyboardButton[] = [];
     let markup = new Keyboard.InlineKeyboardMarkup();
     markup.inline_keyboard = [];
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.MON_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.MON_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.MON_AM, userId, price, true),
+      this.generateButton(RecordKind.MON_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.TUE_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.TUE_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.TUE_AM, userId, price, true),
+      this.generateButton(RecordKind.TUE_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.WED_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.WED_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.WED_AM, userId, price, true),
+      this.generateButton(RecordKind.WED_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.THU_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.THU_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.THU_AM, userId, price, true),
+      this.generateButton(RecordKind.THU_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.FRI_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.FRI_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.FRI_AM, userId, price, true),
+      this.generateButton(RecordKind.FRI_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([
-      this.generateButton(RecordKind.SAT_AM, userId, chatId, price, true),
-      this.generateButton(RecordKind.SAT_PM, userId, chatId, price, true),
+      this.generateButton(RecordKind.SAT_AM, userId, price, true),
+      this.generateButton(RecordKind.SAT_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([cancelButon]);
 
-    markup.inline_keyboard.push(buttonArray);
+    console.log(markup.inline_keyboard);
     options.reply_markup = markup;
     options.reply_to_message_id = message.message_id;
 

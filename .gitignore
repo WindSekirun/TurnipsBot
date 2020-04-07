@@ -116,5 +116,5 @@ dist
 
 .env
 .tmp
-data/data.db
+data/
 built/
