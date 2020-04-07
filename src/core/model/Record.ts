@@ -1,6 +1,6 @@
 import { table, id, field } from 'sqlite3orm';
 
-@table({ name: 'RECORDS' })
+@table({ name: 'RECORDS', autoIncrement: true })
 export class Record {
   @id({ name: 'id', dbtype: 'INTEGER NOT NULL' })
   id: number = 0;
@@ -9,10 +9,10 @@ export class Record {
   userId: string = '';
 
   @field({ name: 'record_id', dbtype: 'TEXT NOT NULL' })
-  recordDate: string = ''
+  recordDate: string = '';
 
-  @field({name: 'record_buy_price', dbtype: 'TEXT'})
-  buyPrice: string = ''
+  @field({ name: 'record_buy_price', dbtype: 'TEXT' })
+  buyPrice: string = '';
 
   @field({ name: 'record_mon_am', dbtype: 'TEXT' })
   monAm: string = '';
