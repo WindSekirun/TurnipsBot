@@ -4,7 +4,6 @@ import fs from 'fs';
 export class ControlResult {
   private indexPathRelative: string = '../../data/result/index.html';
   private basicPath: string = '../../data/result/';
-  webPath: string = 'https://turnips.uzuki.live/';
 
   removeResultFile(uid: string) {
     const filePathRelative = this.basicPath + `${uid}.html`;
@@ -35,6 +34,6 @@ export class ControlResult {
   }
 
   getUrl(uid: string): string {
-    return this.webPath + `${uid}.html`;
+    return process.env.WEB_URL + "/" + `${uid}.html`;
   }
 }

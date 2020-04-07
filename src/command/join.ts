@@ -22,6 +22,8 @@ export class Join extends BotCommand {
       await db.joinUser(userId, userName);
       let returnMessage = messages.join_result.format(userName);
       bot.sendMessage(message.chat.id, returnMessage);
+
+      console.log(`Join User ${userId} - ${userName}`)
     }
   }
 }

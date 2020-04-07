@@ -11,6 +11,10 @@ Turnips Bot for Animal Crossing New Horizon
 
 ## Docker
 
+```shell
+docker run -d -p "8080:80" -e "TELEGRAM_TOKEN=<YOUR_TOKEN>" -e "WEB_URL=http://localhost:8081" windsekirun/turnipsbot
+```
+
 ### Compose
 
 ```yaml
@@ -18,9 +22,6 @@ version: '2'
 
 services:
   turnipsbot:
-    <!-- build:
-      context: .
-      dockerfile: ./Dockerfile -->
     image: windsekirun/turnipsbot
     container_name: "TurnipsBot"
     ports:
@@ -29,6 +30,7 @@ services:
       - "<path>:/usr/src/app/data"
     environment:
       - TELEGRAM_TOKEN=
+      - WEB_URL=
 ```
 
 ## Usages

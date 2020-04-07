@@ -19,7 +19,6 @@ export class Leave extends BotCommand {
     if (!exists) {
       let returnMessage = messages.fail_non_exists.format(userName);
       bot.sendMessage(chatId, returnMessage);
-
       return;
     }
 
@@ -31,5 +30,7 @@ export class Leave extends BotCommand {
     await db.deleteUser(userId);
     let returnMessage = messages.leave_result.format(userName);
     bot.sendMessage(chatId, returnMessage);
+
+    console.log(`Leave User ${userId} - ${userName}`)
   }
 }

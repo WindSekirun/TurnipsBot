@@ -27,7 +27,6 @@ export class Buy extends BotCommand {
     // 구매 가격 레코드
     await db.buyTurnips(userId, match[1]);
     let recordString = await db.getRecordString(userId);
-    console.log(recordString)
 
     // Result 파일 작성하기
     let controlResult = new ControlResult();
@@ -48,5 +47,7 @@ export class Buy extends BotCommand {
     // 사용자 반환
     let returnMessage = messages.buy_result.format(match[1]);
     bot.sendMessage(chatId, returnMessage, options);
+
+    console.log(`User ${userId} - ${userName} buy turnips by ${match[1]}, recordString: ${recordString}`)
   }
 }

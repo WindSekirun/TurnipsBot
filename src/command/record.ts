@@ -55,6 +55,7 @@ export class Record extends BotCommand {
       // 사용자 반환
       let returnMessage = messages.record_result.format(kind, price);
       bot.sendMessage(cid, returnMessage, options);
+      console.log(`User ${uid} Record turnips by ${price} in ${kind}, recordString: ${recordString}`)
 
       // remove message when received callback query
       if (query.message?.message_id != undefined) {

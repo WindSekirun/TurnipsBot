@@ -28,5 +28,7 @@ export class Notify extends BotCommand {
 
     let returnMessage = messages.notify_result.format(newNotify ? '사용함' : '사용하지 않음');
     bot.sendMessage(chatId, returnMessage)
+
+    console.log(`Change User Notify ${userId} - ${userName} / ${newNotify}`)
   }
 }
