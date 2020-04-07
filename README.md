@@ -1,6 +1,9 @@
 # TurnipsBot
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/WindSekirun/TurnipsBot?include_prereleases) ![Docker Pulls](https://img.shields.io/docker/pulls/windsekirun/turnipsbot) ![GitHub](https://img.shields.io/github/license/windsekirun/turnipsbot) 
 
-Turnips Bot for Animal Crossing New Horizon
+TurnipsBot for Telegram for Animal Crossing New Horizon Users :)
+
+Currently, this bot only support KR
 
 ## Install using Docker
 
