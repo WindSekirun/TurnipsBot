@@ -1,33 +1,28 @@
-FROM ubuntu
+FROM node:12-alpine
 
+VOLUME /usr/src/app
 WORKDIR /usr/src/app
+
 ENV TELEGRAM_TOKEN ""
 ENV WEB_URL "http://localhost:8081"
+EXPOSE 80
 
 ## install requirements
-RUN rm -rf /var/lib/apt/list/* && apt-get update && apt-get install curl nano -y
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN rm -rf /var/lib/apt/list/* && apt-get update && apt-get install nodejs python3 nginx -y
+RUN apk update
+RUN apk add curl nano python3 nginx busybox bash
 
 ## copy files
 COPY . .
-RUN ls -la
-RUN ls -la /usr/src/app/data/result
 
 ## Nginx setup
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY home.conf /etc/nginx/conf.d/home.conf
 
 ## Install Bot requirement
-RUN npm install -g yarn
-RUN yarn install
+RUN npm install
 
-RUN ["chmod", "+x", "./buildcommand.sh"]
-RUN ["sh", "./buildcommand.sh"]
-
-RUN yarn build
-
-EXPOSE 80
+RUN ls -la
+RUN npm run build
 
 CMD ["nginx", "-c", "/etc/nginx/nginx.conf"]
-ENTRYPOINT ["yarn", "start-js"]
+ENTRYPOINT ["npm", "run", "start-js"]

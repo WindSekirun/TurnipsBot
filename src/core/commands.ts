@@ -7,10 +7,10 @@ import { Help } from '../command/help';
 import { Join } from '../command/join';
 import { Leave } from '../command/leave';
 import { Notify } from '../command/notify';
+import { Pattern } from '../command/pattern';
 import { Record } from '../command/record';
 import { Result } from '../command/result';
 import { Start } from '../command/start';
-import { Pattern } from '../command/pattern';
  
 export function onText(bot: TelegramBot) {
     new Buy().textMatch(bot);
