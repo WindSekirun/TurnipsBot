@@ -24,10 +24,13 @@ export async function startTurnipsBot() {
   // public 파일 복사하기
   const basePath = path.resolve(__dirname, '../public/index.html');
   const dataPath = path.resolve(__dirname, '../data/index.html');
-  const baseFaviconPath = path.resolve(__dirname, '../public/index.html');
-  const dataFaviconPath = path.resolve(__dirname, '../data/index.html');
   if (!fs.existsSync(dataPath)) {
     fs.copyFileSync(basePath, dataPath);
+  }
+
+  const baseFaviconPath = path.resolve(__dirname, '../public/favicon.ico');
+  const dataFaviconPath = path.resolve(__dirname, '../data/favicon.ico');
+  if (!fs.existsSync(dataFaviconPath)) {
     fs.copyFileSync(baseFaviconPath, dataFaviconPath);
   }
 }
