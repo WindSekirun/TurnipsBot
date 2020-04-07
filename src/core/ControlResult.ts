@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 export class ControlResult {
-  private indexPathRelative: string = '../../data/result/index.html';
+  private basePathRelative: string = '../../data/result/base.html';
   private basicPath: string = '../../data/result/';
 
   removeResultFile(uid: string) {
@@ -20,8 +20,8 @@ export class ControlResult {
       fs.unlinkSync(filePath);
     }
 
-    const indexPath = path.resolve(__dirname, this.indexPathRelative);
-    fs.copyFileSync(indexPath, filePath); // index 파일 복사
+    const basePath = path.resolve(__dirname, this.basePathRelative);
+    fs.copyFileSync(basePath, filePath); // base 파일 복사
     fs.readFile(filePath, 'utf8', function (err, data) {
       if (err) {
         return console.log(err);
