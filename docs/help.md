@@ -55,6 +55,7 @@ pattern - 순무 가격 예측 패턴 설명
 buy - 이번 주 무 구매 가격 입력
 record - 너굴상점의 무 가격 입력
 result - 결과 페이지 확인
+bug - 버그/개선사항 문의
 ```
 
 ## 순무봇 코드
@@ -64,4 +65,5 @@ MIT License로 공개되어 있어요. :: https://github.com/WindSekirun/Turnips
 ## 문의
 
 * 메일: windsekirun@gmail.com
-* 텔레그램: @WindSekirun
+* 텔레그램: [@WindSekirun](http://t.me/WindSekirun)
+* 트위터: [@WindSekirun](https://twitter.com/WindSekirun)

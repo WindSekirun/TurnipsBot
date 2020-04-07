@@ -11,8 +11,10 @@ import { Pattern } from '../command/pattern';
 import { Record } from '../command/record';
 import { Result } from '../command/result';
 import { Start } from '../command/start';
+import { Bug } from './../command/bug';
  
 export function onText(bot: TelegramBot) {
+    new Bug().textMatch(bot);
     new Buy().textMatch(bot);
     new Help().textMatch(bot);
     new Join().textMatch(bot);
