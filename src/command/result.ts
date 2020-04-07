@@ -29,8 +29,6 @@ export class Result extends BotCommand {
     controlResult.generateResultFile(userId, recordString)
     let fileUrl = controlResult.getUrl(userId);
 
-    console.log("url " + fileUrl)
-
     // Keyboard object 구성
     let options = new Keyboard.SendMessageOptions();
     let button = new Keyboard.InlineKeyboardButton();
