@@ -21,9 +21,10 @@ RUN ["sh", "./buildcommand.sh"]
 RUN ["chmod", "+x", "./entrypoint.sh"]
 
 RUN npm run build
+RUN mkdir data
 
 RUN ls -la
-RUN ls -la data
+RUN ls -la public
 RUN ls -la built
 
 ENTRYPOINT ["sh", "./entrypoint.sh"]
