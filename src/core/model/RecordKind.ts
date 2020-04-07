@@ -13,6 +13,7 @@ export enum RecordKind {
   FRI_PM = '금요일 오후',
   SAT_AM = '토요일 오전',
   SAT_PM = '토요일 오후',
+  NONE = '없음'
 }
 
 export function convertToRecord(record: Record, kind: RecordKind, bell: string) {
