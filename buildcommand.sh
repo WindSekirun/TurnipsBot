@@ -1,5 +1,5 @@
 #!/bin/bash
-target="src/core/Commands.ts"
+target="src/core/commands.ts"
 
 echo "Preparing TurnipsBot..."
 

@@ -1,6 +1,6 @@
 import schedule from 'node-schedule';
 import ON_DEATH from 'death';
-import * as bot from './core/Bot';
+import * as bot from './core/bot';
 import { TurnipsDb } from './core/TurnipsDb';
 import { NotifySchedule } from './core/NotifySchedule';
 

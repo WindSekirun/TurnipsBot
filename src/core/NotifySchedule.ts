@@ -1,7 +1,7 @@
 import schedule from 'node-schedule';
 import TelegramBot = require('node-telegram-bot-api');
 import { TurnipsDb } from './TurnipsDb';
-import * as messages from '../json/Message.json';
+import * as messages from '../json/message.json';
 
 export class NotifySchedule {
   scheduleJob(bot: TelegramBot): schedule.Job[] {

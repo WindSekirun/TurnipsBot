@@ -3,7 +3,9 @@ FROM ubuntu
 WORKDIR /usr/src/app
 
 ## install requirements
-RUN rm -rf /var/lib/apt/list/* && apt-get update && apt-get install nodejs npm python3 nginx -y
+RUN rm -rf /var/lib/apt/list/* && apt-get update && apt-get install curl -y
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN rm -rf /var/lib/apt/list/* && apt-get update && apt-get install nodejs python3 nginx -y
 
 ## copy files
 COPY . .
@@ -13,7 +15,8 @@ RUN ls -la
 COPY nginx.conf /etc/nginx/nginx.conf
 
 ## Install Bot requirement
-RUN yarn intall
+RUN npm install -g yarn
+RUN yarn install
 
 RUN ["chmod", "+x", "./buildcommand.sh"]
 RUN ["sh", "./buildcommand.sh"]

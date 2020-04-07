@@ -7,6 +7,8 @@
   "author": "WindSekirun",
   "license": "MIT",
   "dependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/sqlite3": "^3.1.6",
     "bluebird": "^3.7.2",
     "death": "^1.1.0",
     "dotenv": "^8.2.0",
@@ -32,7 +34,7 @@
   "scripts": {
     "start": "ts-node src/Index.ts",
     "build": "tsc",
-     "start-js": "node built/index.js",
+    "start-js": "node built/index.js",
     "test": "jest"
   }
 }
