@@ -1,0 +1,4 @@
+data/data.db
+node_modules
+tmp/
+.env

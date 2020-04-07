@@ -1,4 +1,4 @@
-import { table, id, field, index, fk, FieldOpts, TableOpts } from 'sqlite3orm';
+import { table, id, field } from 'sqlite3orm';
 
 @table({ name: 'RECORDS' })
 export class Record {

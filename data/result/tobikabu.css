@@ -34,7 +34,7 @@ table th,
 table td{
 	border: 1px solid black;
 	padding: 1px 3px;
-	font-size: 80%;
+	font-size: 100%;
 	white-space: nowrap;
 }
 table th span.bell,

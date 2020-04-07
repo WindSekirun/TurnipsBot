@@ -1,18 +1,18 @@
-import TelegramBot = require('node-telegram-bot-api');
-import { BotCommand } from '../core/BotCommand';
-import { bot } from '../core/Bot';
-import * as messages from '../json/Message.json';
-import { TurnipsDb } from './../core/TurnipsDb';
-import { ControlResult } from './../core/ControlResult';
-import * as Keyboard from '../core/Keyboard';
-import '../core/ext/String';
-import { RecordKind } from '../core/model/RecordKind';
+import TelegramBot = require("node-telegram-bot-api");
+import { BotCommand } from "../core/botcommand";
+import { bot } from "../core/Bot";
+import * as messages from "../json/Message.json";
+import { TurnipsDb } from "./../core/TurnipsDb";
+import { ControlResult } from "./../core/ControlResult";
+import * as Keyboard from "../core/Keyboard";
+import "../core/ext/string";
+import { RecordKind } from "../core/model/RecordKind";
 
 class RecordCallbackQuery {
   k: RecordKind = RecordKind.MON_AM;
-  u: string = '';
+  u: string = "";
   c: number = 0;
-  p: string = '';
+  p: string = "";
 
   constructor(kind: RecordKind, uid: string, cid: number, price: string) {
     this.k = kind;
@@ -55,10 +55,20 @@ export class Record extends BotCommand {
       // 사용자 반환
       let returnMessage = messages.record_result.format(kind, price);
       bot.sendMessage(cid, returnMessage, options);
+
+      // remove message when received callback query
+      if (query.message?.message_id != undefined) {
+        await bot.deleteMessage(cid, query.message?.message_id + "");
+      }
     }
   };
 
-  private generateButton(item: RecordKind, userId: string, chatId: number, price: string): Keyboard.InlineKeyboardButton {
+  private generateButton(
+    item: RecordKind,
+    userId: string,
+    chatId: number,
+    price: string
+  ): Keyboard.InlineKeyboardButton {
     let button = new Keyboard.InlineKeyboardButton();
     button.text = item;
     button.callback_data = JSON.stringify(new RecordCallbackQuery(item, userId, chatId, price));
@@ -67,8 +77,8 @@ export class Record extends BotCommand {
 
   async onMatch(message: TelegramBot.Message, match: RegExpMatchArray): Promise<void> {
     let db = await TurnipsDb.getInstance();
-    let userName = (message?.from?.username || message?.from?.first_name) ?? '';
-    let userId = message?.from?.id + '';
+    let userName = (message?.from?.username || message?.from?.first_name) ?? "";
+    let userId = message?.from?.id + "";
     let chatId = message.chat.id;
 
     // 유저가 존재하는지 체크
@@ -124,7 +134,7 @@ export class Record extends BotCommand {
     options.reply_to_message_id = message.message_id;
 
     // callback_query 신호 추적
-    bot.once('callback_query', this.onceListener);
+    bot.once("callback_query", this.onceListener);
 
     let returnMessage = messages.record_select_date.format(price);
     bot.sendMessage(chatId, returnMessage, options);

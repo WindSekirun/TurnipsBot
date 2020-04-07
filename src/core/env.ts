@@ -1,4 +1,4 @@
-import './ext/String';
+import './ext/string';
 
 export let ADMIN_USER_ID = '-1001363414751';
 export let DEBUG_MODE: boolean = true;

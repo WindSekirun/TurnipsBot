@@ -2,14 +2,15 @@
 // commands.ts file is generated for each run.
 
 import TelegramBot = require('node-telegram-bot-api')
-import { Buy } from '../command/Buy';
-import { Help } from '../command/Help';
-import { Join } from '../command/Join';
-import { Leave } from '../command/Leave';
-import { Notify } from '../command/Notify';
-import { Record } from '../command/Record';
-import { Result } from '../command/Result';
-import { Start } from '../command/Start';
+import { Buy } from '../command/buy';
+import { Help } from '../command/help';
+import { Join } from '../command/join';
+import { Leave } from '../command/leave';
+import { Notify } from '../command/notify';
+import { Record } from '../command/record';
+import { Result } from '../command/result';
+import { Start } from '../command/start';
+import { Pattern } from '../command/pattern';
  
 export function onText(bot: TelegramBot) {
     new Buy().textMatch(bot);
@@ -17,6 +18,7 @@ export function onText(bot: TelegramBot) {
     new Join().textMatch(bot);
     new Leave().textMatch(bot);
     new Notify().textMatch(bot);
+    new Pattern().textMatch(bot);
     new Record().textMatch(bot);
     new Result().textMatch(bot);
     new Start().textMatch(bot);

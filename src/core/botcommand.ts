@@ -1,5 +1,5 @@
 import TelegramBot = require('node-telegram-bot-api');
-import * as settings from './Env';
+import * as settings from './env';
 
 export abstract class BotCommand {
   abstract matchRegex: RegExp;

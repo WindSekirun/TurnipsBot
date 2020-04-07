@@ -1,8 +1,4 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { bot } from './Bot';
-import * as settings from './Env';
-
-let callbackQueryListener = null;
 
 export class SendMessageOptions implements TelegramBot.SendMessageOptions {
   reply_to_message_id?: number;
@@ -58,19 +54,4 @@ export function addInlineKeyboard(...buttons: InlineKeyboardButton[]) {
   markup.inline_keyboard = [];
   markup.inline_keyboard.push(buttons);
   return markup;
-}
-
-export function editMessageReplyMarkup(options: EditMessageReplyMarkupOptions) {
-  console.log(options);
-
-  if ((options.inline_message_id = '' && (options.chat_id == '' || options.chat_id == 0) && options.message_id == 0)) {
-    // ignore empty options
-    return;
-  }
-
-  bot.editMessageReplyMarkup(new InlineKeyboardMarkup(), options).catch((err) => {
-    if (settings.DEBUG_MODE && settings.LOG_MESSAGE_BODY) {
-      console.log(err.response.body);
-    }
-  });
 }

@@ -1,9 +1,9 @@
 import TelegramBot = require('node-telegram-bot-api');
-import { BotCommand } from '../core/BotCommand';
+import { BotCommand } from '../core/botcommand';
 import { bot } from '../core/Bot';
 import * as messages from '../json/Message.json';
 import * as Keyboard from '../core/Keyboard';
-import '../core/ext/String';
+import '../core/ext/string';
 
 export class Help extends BotCommand {
   matchRegex: RegExp = /\/help/;
