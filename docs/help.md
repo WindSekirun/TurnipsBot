@@ -55,9 +55,9 @@ record - 너굴상점의 무 가격 입력
 result - 결과 페이지 확인
 ```
 
-## 자료 참조
+## 순무봇 코드
 
-* http://tobikabu.web.fc2.com/tobikabu.html
+MIT License로 공개되어 있어요. :: https://github.com/WindSekirun/TurnipsBot
 
 ## 문의
 

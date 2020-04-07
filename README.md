@@ -2,17 +2,10 @@
 
 Turnips Bot for Animal Crossing New Horizon
 
-## Build
-
-1. `touch .env`
-2. `echo 'TELEGRAM_TOKEN=<YOUR_TOKEN>' > .env`
-3. `yarn install`
-4. `runlocal.sh`
-
-## Docker
+## Install using Docker
 
 ```shell
-docker run -d -p "8080:80" -e "TELEGRAM_TOKEN=<YOUR_TOKEN>" -e "WEB_URL=http://localhost:8081" windsekirun/turnipsbot
+docker run -d -p "8080:80" -e "TELEGRAM_TOKEN=<YOUR_TOKEN>" -e "WEB_URL=http://turnips.uzuki.live" windsekirun/turnipsbot
 ```
 
 ### Compose
@@ -23,19 +16,28 @@ version: '2'
 services:
   turnipsbot:
     image: windsekirun/turnipsbot
-    container_name: "TurnipsBot"
+    container_name: "turnipsbot"
     ports:
       - "8080:80"
     volumes:
-      - "<path>:/usr/src/app/data"
+      - "turnips-volume:/usr/src/app/data"
     environment:
       - TELEGRAM_TOKEN=
-      - WEB_URL=
+      - WEB_URL=http://turnips.uzuki.live
+
+volumes:
+  turnips-volume:
 ```
 
 ## Usages
 
 for Usages, Please visit [https://windsekirun.github.io/TurnipsBot/help.html](https://windsekirun.github.io/TurnipsBot/help.html)
+
+## Build
+
+1. `echo 'TELEGRAM_TOKEN=<YOUR_TOKEN>' > .env`
+2. `yarn install`
+3. `sh runlocal.sh`
 
 ## License
 
