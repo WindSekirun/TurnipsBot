@@ -136,8 +136,6 @@ export class Record extends BotCommand {
       this.generateButton(RecordKind.SAT_PM, userId, price, true),
     ]);
     markup.inline_keyboard.push([cancelButon]);
-
-    console.log(markup.inline_keyboard);
     options.reply_markup = markup;
     options.reply_to_message_id = message.message_id;
 
