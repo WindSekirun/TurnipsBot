@@ -2,23 +2,24 @@ import schedule from 'node-schedule';
 import TelegramBot = require('node-telegram-bot-api');
 import { TurnipsDb } from './TurnipsDb';
 import * as messages from '../json/message.json';
+import { RecordKind } from './model/RecordKind';
 
 export class NotifySchedule {
   scheduleJob(bot: TelegramBot): schedule.Job[] {
     const sundayBuyJob = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 0, tz: "Asia/Seoul"  }, () => this.sendSundayBuy(bot));
     const sundayRecordJob = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 0, tz: "Asia/Seoul"  }, () => this.sendSundayRecord(bot));
-    const mon1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 1, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const mon2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 1, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const tue1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const tue2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const wed1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const wed2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const thu1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const thu2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const fri1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 5, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot));
-    const fri2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 5, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, true));
-    const sat1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 6, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, true));
-    const sat2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 6, tz: "Asia/Seoul" }, () => this.sendTurnipPrice(bot, true));
+    const mon1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 1, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.MON_AM));
+    const mon2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 1, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.MON_PM));
+    const tue1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_AM));
+    const tue2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_PM));
+    const wed1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.WED_AM));
+    const wed2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_PM));
+    const thu1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.THU_AM));
+    const thu2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.THU_PM));
+    const fri1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 5, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.FRI_AM));
+    const fri2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 5, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.FRI_PM, true));
+    const sat1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 6, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.SAT_AM, true));
+    const sat2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 6, tz: "Asia/Seoul" }, () => this.sendTurnipPrice(bot, RecordKind.SAT_PM, true));
 
     console.log('Scheduled job!')
     
@@ -26,8 +27,8 @@ export class NotifySchedule {
     return jobArray
   }
 
-  private async sendTurnipPrice(bot: TelegramBot, must: boolean = false) {
-    let returnMessage = messages.notify_turnip_price;
+  private async sendTurnipPrice(bot: TelegramBot, kind: RecordKind, must: boolean = false) {
+    let returnMessage = messages.notify_turnip_price.format(kind);
     if (must) {
       returnMessage += '\n' + messages.notify_turnip_must;
     }

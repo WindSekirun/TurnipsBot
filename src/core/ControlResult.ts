@@ -26,7 +26,7 @@ export class ControlResult {
       if (err) {
         return console.log(err);
       }
-      var result = data.replace(/const priceArray = \["", "", "", "", "", "", "", "", "", "", "", "", ""]/g, resultCode);
+      const result = data.replace(/const priceArray = \["", "", "", "", "", "", "", "", "", "", "", "", ""]/g, resultCode);
       fs.writeFile(filePath, result, 'utf8', function (err) {
         if (err) return console.log(err);
       });
