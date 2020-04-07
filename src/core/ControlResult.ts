@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 export class ControlResult {
-  private basePathRelative: string = '../../data/base.html';
+  private basePathRelative: string = '../../public/base.html';
   private basicPath: string = '../../data/';
 
   removeResultFile(uid: string) {
