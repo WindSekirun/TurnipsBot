@@ -2,8 +2,8 @@ import path from 'path';
 import fs from 'fs';
 
 export class ControlResult {
-  private basePathRelative: string = '../../data/result/base.html';
-  private basicPath: string = '../../data/result/';
+  private basePathRelative: string = '../../data/base.html';
+  private basicPath: string = '../../data/';
 
   removeResultFile(uid: string) {
     const filePathRelative = this.basicPath + `${uid}.html`;

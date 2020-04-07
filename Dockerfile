@@ -22,4 +22,8 @@ RUN ["chmod", "+x", "./entrypoint.sh"]
 
 RUN npm run build
 
+RUN ls -la
+RUN ls -la data
+RUN ls -la built
+
 ENTRYPOINT ["sh", "./entrypoint.sh"]
