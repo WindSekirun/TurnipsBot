@@ -13,7 +13,7 @@ export class NotifySchedule {
     const tue1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_AM));
     const tue2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 2, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_PM));
     const wed1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.WED_AM));
-    const wed2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.TUE_PM));
+    const wed2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 3, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.WED_PM));
     const thu1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.THU_AM));
     const thu2Job = schedule.scheduleJob({ hour: 14, minute: 0, dayOfWeek: 4, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.THU_PM));
     const fri1Job = schedule.scheduleJob({ hour: 10, minute: 0, dayOfWeek: 5, tz: "Asia/Seoul"  }, () => this.sendTurnipPrice(bot, RecordKind.FRI_AM));
