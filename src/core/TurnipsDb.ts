@@ -1,11 +1,11 @@
-import { SqlDatabase, schema, BaseDAO } from 'sqlite3orm';
-import { User } from './model/User';
-import { Record } from './model/Record';
-import { RecordKind, convertToRecord } from './model/RecordKind';
-import moment from 'moment';
-import path from 'path';
+import { SqlDatabase, schema, BaseDAO } from "sqlite3orm";
+import { User } from "./model/User";
+import { Record } from "./model/Record";
+import { RecordKind, convertToRecord, checkBellExists } from "./model/RecordKind";
+import moment from "moment";
+import path from "path";
 
-require('dotenv').config();
+require("dotenv").config();
 
 export class TurnipsDb {
   private static instance: TurnipsDb;
@@ -15,7 +15,7 @@ export class TurnipsDb {
 
   private constructor() {}
 
-  static async getInstance(filePath: string = '../../data/data.db'): Promise<TurnipsDb> {
+  static async getInstance(filePath: string = "../../data/data.db"): Promise<TurnipsDb> {
     if (!TurnipsDb.instance) {
       let instance = new TurnipsDb();
       await instance.initialize(filePath);
@@ -77,8 +77,22 @@ export class TurnipsDb {
     return (await this.userDao?.selectAll({ notify: true })) ?? [];
   }
 
+  async getNotifyUserByRecordKind(kind: RecordKind): Promise<User[]> {
+    const recordDate = this.getRecordDate();
+    const users = await this.getNotifyUsers();
+    return users
+      .filter((user) => user.ignoreRecordDate != recordDate)
+      .filter(async (user) => {
+        let record = await this.getRecord(user.userId, recordDate);
+        if (record != undefined) {
+          return checkBellExists(record, kind)
+        }
+        return false;
+      });
+  }
+
   async buyTurnips(uid: string, buyPrice: string): Promise<Record | undefined> {
-    let recordDate = moment().day('Sunday').format('YYYYMMDD');
+    let recordDate = this.getRecordDate();
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
       const oldId = record.id;
@@ -99,7 +113,7 @@ export class TurnipsDb {
   }
 
   async existsRecord(uid: string): Promise<Boolean> {
-    let recordDate = moment().day('Sunday').format('YYYYMMDD');
+    let recordDate = this.getRecordDate();
     let record = await this.getRecord(uid, recordDate);
     return record != undefined;
   }
@@ -110,7 +124,7 @@ export class TurnipsDb {
   }
 
   async recordBell(uid: string, kind: RecordKind, bell: string): Promise<Record | undefined> {
-    let recordDate = moment().day('Sunday').format('YYYYMMDD');
+    let recordDate = this.getRecordDate();
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
       record = convertToRecord(record, kind, bell);
@@ -122,7 +136,7 @@ export class TurnipsDb {
   }
 
   async getRecordString(uid: string): Promise<string> {
-    let recordDate = moment().day('Sunday').format('YYYYMMDD');
+    let recordDate = this.getRecordDate();
     let record = await this.getRecord(uid, recordDate);
     if (record != undefined) {
       let result = `const priceArray = ["${record.buyPrice}", "${record.monAm}", "${record.monPm}", "${record.tueAm}", "${record.tuePm}", "${record.wedAm}", "${record.wedPm}", "${record.thuAm}", "${record.thuPm}", "${record.friAm}", "${record.friPm}", "${record.satAm}", "${record.satPm}"]`;
@@ -130,6 +144,18 @@ export class TurnipsDb {
     }
 
     return 'const priceArray = ["", "", "", "", "", "", "", "", "", "", "", "", ""]';
+  }
+
+  async ignoreRecordDate(uid: string): Promise<User | undefined> {
+    let recordDate = this.getRecordDate();
+    let user = await this.getUser(uid);
+    if (user != undefined) {
+      user.ignoreRecordDate = recordDate;
+      user = await this.userDao.update(user);
+      return user;
+    }
+
+    return undefined;
   }
 
   async close() {
@@ -146,18 +172,22 @@ export class TurnipsDb {
     return records[0] ?? undefined;
   }
 
+  private getRecordDate(): string {
+    return moment().day("Sunday").format("YYYYMMDD");
+  }
+
   private async initialize(filePath: string) {
     const dbPath = path.resolve(__dirname, filePath);
     await this.sqldb.open(dbPath);
 
     let userVersion = await this.sqldb.getUserVersion();
 
-    await schema().createTable(this.sqldb, 'USERS');
-    await schema().createTable(this.sqldb, 'RECORDS');
+    await schema().createTable(this.sqldb, "USERS");
+    await schema().createTable(this.sqldb, "RECORDS");
 
     if (userVersion == 1) {
-      await schema().alterTableAddColumn(this.sqldb, 'USERS', 'user_ignore_record_date')
-      console.log(`Database migrated, request add column 'user_ignore_record_date' in issue #4`)
+      await schema().alterTableAddColumn(this.sqldb, "USERS", "user_ignore_record_date");
+      console.log(`Database migrated, request add column 'user_ignore_record_date' in issue #4`);
     }
 
     await this.sqldb.setUserVersion(2);
@@ -165,6 +195,6 @@ export class TurnipsDb {
     this.userDao = new BaseDAO(User, this.sqldb);
     this.recordDao = new BaseDAO(Record, this.sqldb);
 
-    console.log('Database initialized!');
+    console.log("Database initialized!");
   }
 }
