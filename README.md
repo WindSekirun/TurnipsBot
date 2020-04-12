@@ -27,6 +27,7 @@ services:
     environment:
       - TELEGRAM_TOKEN=
       - WEB_URL=http://turnips.uzuki.live
+      - NTBA_FIX_319=1
 
 volumes:
   turnips-volume:
