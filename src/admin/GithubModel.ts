@@ -19,7 +19,7 @@ export interface Author {
     site_admin: boolean;
 }
 
-export interface Releases {
+export interface GithubRelease {
     url: string;
     assets_url: string;
     upload_url: string;

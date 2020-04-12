@@ -24,5 +24,5 @@
     "bug_result": "버그나 개선점을 발견하셨다면 @WindSekirun / https://twitter.com/WindSekirun 로 문의 부탁드려요!",
     "ignore_add": "벌써 다 판매하셨군요!🥳 이번 주에 발송되는 구매 알림을 받지 않도록 설정했어요!",
     "ignore_remove": "이번 주에 발송되는 구매 알림을 받도록 설정했어요!",
-    "update_notification": "순무봇이 업데이트 되었어요👏\n현재 버전: {0}\n\n업데이트 내역:\n\n{1}"
+    "update_notification": "순무봇이 업데이트 되었어요👏\n현재 버전: {0}\n\n[업데이트 내역]\n{1}"
 }
