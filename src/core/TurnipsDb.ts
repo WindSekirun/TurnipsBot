@@ -73,6 +73,10 @@ export class TurnipsDb {
     return undefined;
   }
 
+  async getUsers(): Promise<User[]> {
+    return (await this.userDao?.selectAll()) ?? [];
+  }
+
   async getNotifyUsers(): Promise<User[]> {
     return (await this.userDao?.selectAll({ notify: true })) ?? [];
   }
