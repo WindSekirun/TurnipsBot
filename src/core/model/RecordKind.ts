@@ -16,6 +16,49 @@ export enum RecordKind {
   NONE = '없음'
 }
 
+export function checkBellExists(record: Record, kind: RecordKind) {
+  switch (kind) {
+    case RecordKind.MON_AM: {
+      return record.monAm != ''
+    }
+    case RecordKind.MON_PM: {
+      return record.monPm != ''
+    }
+    case RecordKind.TUE_AM: {
+      return record.tueAm != ''
+    }
+    case RecordKind.TUE_PM: {
+      return record.tuePm != ''
+    }
+    case RecordKind.WED_AM: {
+      return record.wedAm != ''
+    }
+    case RecordKind.WED_PM: {
+      return record.wedPm != ''
+    }
+    case RecordKind.THU_AM: {
+      return record.thuAm != ''
+    }
+    case RecordKind.THU_PM: {
+      return record.thuPm != ''
+    }
+    case RecordKind.FRI_AM: {
+      return record.friAm != ''
+    }
+    case RecordKind.FRI_PM: {
+      return record.friPm != ''
+    }
+    case RecordKind.SAT_AM: {
+      return record.satAm != ''
+    }
+    case RecordKind.SAT_PM: {
+      return record.satPm != ''
+    }
+  }
+
+  return false
+}
+
 export function convertToRecord(record: Record, kind: RecordKind, bell: string) {
   switch (kind) {
     case RecordKind.MON_AM: {
