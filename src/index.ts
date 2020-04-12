@@ -1,6 +1,7 @@
 import ON_DEATH from 'death';
 import path from 'path';
 import fs from 'fs';
+import ncp from 'ncp';
 import * as bot from './core/bot';
 import { TurnipsDb } from './core/TurnipsDb';
 import { NotifySchedule } from './core/NotifySchedule';
@@ -21,18 +22,13 @@ export async function startTurnipsBot() {
     jobArray.forEach((item) => item.cancel());
   });
 
-  // public 파일 복사하기
-  const basePath = path.resolve(__dirname, '../public/index.html');
-  const dataPath = path.resolve(__dirname, '../data/index.html');
-  if (!fs.existsSync(dataPath)) {
-    fs.copyFileSync(basePath, dataPath);
-  }
+  ncp(path.resolve(__dirname, '../public'), path.resolve(__dirname, '../data'), (err) => {
+    if (err) {
+      return console.log(err);
+    }
 
-  const baseFaviconPath = path.resolve(__dirname, '../public/favicon.ico');
-  const dataFaviconPath = path.resolve(__dirname, '../data/favicon.ico');
-  if (!fs.existsSync(dataFaviconPath)) {
-    fs.copyFileSync(baseFaviconPath, dataFaviconPath);
-  }
+    console.log("Copyed public to data ")
+  })
 }
 
 startTurnipsBot();
