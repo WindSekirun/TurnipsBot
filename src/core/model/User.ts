@@ -13,4 +13,7 @@ export class User {
 
   @field({ name: 'user_notify' })
   notify: boolean = true;
+
+  @field({ name: 'user_ignore_record_date', dbtype: 'TEXT'})
+  ignoreRecordDate: string = '';
 }
