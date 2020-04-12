@@ -146,11 +146,30 @@ export class TurnipsDb {
     return 'const priceArray = ["", "", "", "", "", "", "", "", "", "", "", "", ""]';
   }
 
+  async existsIgnoreRecordDate(uid: string): Promise<boolean> {
+    let user = await this.getUser(uid);
+    if (user != undefined) {
+      return user.ignoreRecordDate != '' || user.ignoreRecordDate != undefined || user.ignoreRecordDate != 'NULL'
+    }
+    return false;
+  }
+
   async ignoreRecordDate(uid: string): Promise<User | undefined> {
     let recordDate = this.getRecordDate();
     let user = await this.getUser(uid);
     if (user != undefined) {
       user.ignoreRecordDate = recordDate;
+      user = await this.userDao.update(user);
+      return user;
+    }
+
+    return undefined;
+  }
+
+  async removeIgnoreRecordDate(uid: string): Promise<User | undefined> {
+    let user = await this.getUser(uid);
+    if (user != undefined) {
+      user.ignoreRecordDate = '';
       user = await this.userDao.update(user);
       return user;
     }

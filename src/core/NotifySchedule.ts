@@ -33,7 +33,11 @@ export class NotifySchedule {
       returnMessage += '\n' + messages.notify_turnip_must;
     }
 
-    this.sendMessageToNotifyUserList(bot, returnMessage);
+    console.log(`Notify ${returnMessage} to users by kind ${kind}`)
+    let userList = await this.getNotifyUserByRecordKind(kind);
+    userList.forEach((item) => {
+      bot.sendMessage(item, returnMessage);
+    });
   }
 
   private async sendSundayBuy(bot: TelegramBot) {
@@ -57,6 +61,12 @@ export class NotifySchedule {
   private async getNotifyUserList(): Promise<string[]> {
     let db = await TurnipsDb.getInstance();
     let users = await db.getNotifyUsers();
+    return users.map((item) => item.userId);
+  }
+
+  private async getNotifyUserByRecordKind(kind: RecordKind): Promise<string[]> {
+    let db = await TurnipsDb.getInstance();
+    let users = await db.getNotifyUserByRecordKind(kind);
     return users.map((item) => item.userId);
   }
 }
