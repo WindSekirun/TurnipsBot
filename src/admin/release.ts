@@ -3,7 +3,7 @@ import moment = require("moment");
 import request = require("request-promise-native");
 import TelegramBot = require("node-telegram-bot-api");
 import * as messages from '../json/message.json';
-import { Releases } from './GithubModel';
+import { GithubRelease } from './GithubModel';
 import '../core/ext/string';
 
 require('dotenv').config();
@@ -21,7 +21,7 @@ export async function sendRelease() {
     }
   };
   
-  let response: Releases[] = await request(releaseRequestOptions);
+  let response: GithubRelease[] = await request(releaseRequestOptions);
   response.forEach(release => {
       release.formatted_date = moment(release.created_at).format("YYYMMDD")
   });
