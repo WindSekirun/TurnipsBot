@@ -149,7 +149,7 @@ export class TurnipsDb {
   async existsIgnoreRecordDate(uid: string): Promise<boolean> {
     let user = await this.getUser(uid);
     if (user != undefined) {
-      return user.ignoreRecordDate != '' || user.ignoreRecordDate != undefined || user.ignoreRecordDate != 'NULL'
+      return user.ignoreRecordDate != '' && user.ignoreRecordDate != undefined && user.ignoreRecordDate != 'NULL'
     }
     return false;
   }
