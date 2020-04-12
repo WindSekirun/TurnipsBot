@@ -119,3 +119,17 @@ test('Record String for generating file', async () => {
     let result = await db.getRecordString(TEST_USER_UID);
     expect(result).toEqual('const priceArray = ["94", "110", "109", "108", "107", "106", "105", "104", "103", "102", "101", "100", "99"]');
 })
+
+test('Join Temp user2', async () => {
+  let db = await TurnipsDb.getInstance(filePath);
+  let result = await db.joinUser('323124', 'test');
+  expect(result).not.toBeUndefined;
+  expect(result?.userId).toEqual('323124');
+});
+
+test('Ignore Date Value', async () => {
+  let db = await TurnipsDb.getInstance(filePath);
+  await db.ignoreRecordDate(TEST_USER_UID)
+  let result = await db.getNotifyUserByRecordKind(RecordKind.MON_AM);
+  expect(result[0].userId).toEqual('323124')
+})
