@@ -1,6 +1,5 @@
 import ON_DEATH from 'death';
 import path from 'path';
-import fs from 'fs';
 import ncp from 'ncp';
 import * as bot from './core/bot';
 import { TurnipsDb } from './core/TurnipsDb';
