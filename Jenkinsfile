@@ -3,7 +3,7 @@ pipeline {
     environment {
         registry = "windsekirun/turnipsbot"
         registryCredential = 'DockerHub'
-        branch = "${java.net.URLEncoder.encode(env.BRANCH_NAME, "UTF-8")}"
+        branch = "${env.BRANCH_NAME.replace("/", "-")}"
     }
     agent any
     stages {
