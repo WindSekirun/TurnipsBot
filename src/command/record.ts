@@ -105,7 +105,7 @@ export class Record extends BotCommand {
 
     // Kind를 선택하기 위해 키보드를 구성
     let cancelButon = new Keyboard.InlineKeyboardButton();
-    cancelButon.text = messages.record_select_cancel;
+    cancelButon.text = messages.select_cancel;
     cancelButon.callback_data = JSON.stringify(new RecordCallbackQuery(RecordKind.NONE, userId, price, false));
   
     let options = new Keyboard.SendMessageOptions();
