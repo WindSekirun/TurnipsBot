@@ -63,5 +63,5 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
-  "exclude": ["node_modules", "**/*.spec.ts", "built", "public", "tests", "jest.config.js", "docs"]
+  "exclude": ["node_modules", "**/*.spec.ts", "built", "public", "tests", "jest.config.js", "docs", "jest.setup.js"]
 }
