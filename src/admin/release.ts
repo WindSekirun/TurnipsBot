@@ -3,21 +3,25 @@ import moment = require("moment");
 import request = require("request-promise-native");
 import TelegramBot = require("node-telegram-bot-api");
 import * as messages from '../json/message.json';
+import { Releases } from './GithubModel';
 import '../core/ext/string';
 
 require('dotenv').config();
 
-export async function setRelease() {
+export async function sendRelease() {
    // database initilaize
   let db = await TurnipsDb.getInstance();
 
   let releaseRequestOptions = {
     uri: 'https://api.github.com/repos/WindSekirun/TurnipsBot/releases',
     method: "GET",
-    json: true
+    json: true,
+    headers: {
+        "User-Agent": "windsekirun/TurnipsBot"
+    }
   };
   
-  let response: Github.Releases[] = await request(releaseRequestOptions);
+  let response: Releases[] = await request(releaseRequestOptions);
   response.forEach(release => {
       release.formatted_date = moment(release.created_at).format("YYYMMDD")
   });
@@ -38,3 +42,5 @@ export async function setRelease() {
     console.log(`Sending update notification to ${user.userId} - ${user.nickname}: ${response}`)
   }) 
 }
+
+sendRelease()
