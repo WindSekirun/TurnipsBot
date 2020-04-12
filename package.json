@@ -41,6 +41,7 @@
     "start": "ts-node src/Index.ts",
     "build": "tsc",
     "start-js": "node built/index.js",
-    "test": "jest"
+    "test": "jest",
+    "update-notify": "node built/admin/release.js"
   }
 }
