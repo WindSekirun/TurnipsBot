@@ -3,6 +3,7 @@ pipeline {
     environment {
         registry = "windsekirun/turnipsbot"
         registryCredential = 'DockerHub'
+        branch = env.BRANCH_NAME
     }
     agent any
     stages {
@@ -25,7 +26,7 @@ pipeline {
                 expression { env.BRANCH_NAME != 'master' }
             }
             steps {
-                sh 'docker build -t $registry:${env.BRANCH_NAME} --build-arg VCS_REF=`git rev-parse --short HEAD` .'
+                sh 'docker build -t $registry:$branch --build-arg VCS_REF=`git rev-parse --short HEAD` .'
             }
         }   
         stage('Build docker image - Real') {
