@@ -25,12 +25,13 @@ pipeline {
                 sh 'docker build -t $registry:latest --build-arg VCS_REF=`git rev-parse --short HEAD` .'
             }
         }
-        if (env.BRANCH_NAME == 'master') {
-            stage('Deploy docker image') {
-                steps {
-                    withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
-                        sh 'docker push $registry:latest'
-                    }
+        stage('Deploy docker image') {
+            when {
+                expression { env.BRANCH_NAME == 'master' }
+            }
+            steps {
+                withDockerRegistry([ credentialsId: registryCredential, url: "" ]) {
+                    sh 'docker push $registry:latest'
                 }
             }
         }
