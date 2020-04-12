@@ -3,7 +3,7 @@ pipeline {
     environment {
         registry = "windsekirun/turnipsbot"
         registryCredential = 'DockerHub'
-        branch = env.BRANCH_NAME
+        branch = "${env.BRANCH_NAME}"
     }
     agent any
     stages {
