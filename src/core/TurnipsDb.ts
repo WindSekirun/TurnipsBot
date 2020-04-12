@@ -95,6 +95,20 @@ export class TurnipsDb {
       });
   }
 
+  async getNotifyUserByRecord(exists: boolean): Promise<User[]> {
+    const recordDate = this.getRecordDate();
+    const users = await this.getNotifyUsers();
+    return users
+      .filter((user) => user.ignoreRecordDate != recordDate)
+      .filter(async (user) => {
+        let record = await this.getRecord(user.userId, recordDate);
+        if (record != undefined) {
+          return exists;
+        }
+        return !exists;
+      });
+  }
+
   async buyTurnips(uid: string, buyPrice: string): Promise<Record | undefined> {
     let recordDate = this.getRecordDate();
     let record = await this.getRecord(uid, recordDate);

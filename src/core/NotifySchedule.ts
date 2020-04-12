@@ -29,44 +29,34 @@ export class NotifySchedule {
 
   private async sendTurnipPrice(bot: TelegramBot, kind: RecordKind, must: boolean = false) {
     let returnMessage = messages.notify_turnip_price.format(kind);
-    if (must) {
-      returnMessage += '\n' + messages.notify_turnip_must;
-    }
-
+    if (must) returnMessage += '\n' + messages.notify_turnip_must;
     console.log(`Notify ${returnMessage} to users by kind ${kind}`)
-    let userList = await this.getNotifyUserByRecordKind(kind);
+
+    let db = await TurnipsDb.getInstance();
+    let userList = (await db.getNotifyUserByRecordKind(kind)).map(user => user.userId);
     userList.forEach((item) => {
       bot.sendMessage(item, returnMessage);
     });
   }
 
   private async sendSundayBuy(bot: TelegramBot) {
-    let returnMessage = messages.notify_sunday_buy;
-    this.sendMessageToNotifyUserList(bot, returnMessage);
-  }
-
-  private async sendSundayRecord(bot: TelegramBot) {
-    let returnMessage = messages.notify_sunday_record;
-    this.sendMessageToNotifyUserList(bot, returnMessage);
-  }
-
-  private async sendMessageToNotifyUserList(bot: TelegramBot, returnMessage: string) {
+    let returnMessage = messages.notify_sunday_buy; 
     console.log(`Notify ${returnMessage} to users!`)
-    let userList = await this.getNotifyUserList();
+
+    let db = await TurnipsDb.getInstance();
+    let userList = (await db.getNotifyUsers()).map(user => user.userId)
     userList.forEach((item) => {
       bot.sendMessage(item, returnMessage);
     });
   }
 
-  private async getNotifyUserList(): Promise<string[]> {
-    let db = await TurnipsDb.getInstance();
-    let users = await db.getNotifyUsers();
-    return users.map((item) => item.userId);
-  }
+  private async sendSundayRecord(bot: TelegramBot) {
+    let returnMessage = messages.notify_sunday_record;
 
-  private async getNotifyUserByRecordKind(kind: RecordKind): Promise<string[]> {
     let db = await TurnipsDb.getInstance();
-    let users = await db.getNotifyUserByRecordKind(kind);
-    return users.map((item) => item.userId);
+    let userList = (await db.getNotifyUserByRecord(false)).map(user => user.userId)
+    userList.forEach((item) => {
+      bot.sendMessage(item, returnMessage);
+    });
   }
 }
