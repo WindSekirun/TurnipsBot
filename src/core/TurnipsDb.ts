@@ -213,7 +213,17 @@ export class TurnipsDb {
       console.log(`Database migrated, request add column 'user_ignore_record_date' in issue #4`);
     }
 
-    await this.sqldb.setUserVersion(2);
+    if (userVersion == 2) {
+      this.recordDao = new BaseDAO(Record, this.sqldb);
+      const records = await this.recordDao?.selectAll()
+      await this.recordDao.dropTable()
+      await this.recordDao.createTable()
+      await schema().createTable(this.sqldb, "RECORDS")
+      records?.forEach(record => this.recordDao?.insert(record))
+      console.log(`Database migrated, all records are migrated.`)
+    }
+
+    await this.sqldb.setUserVersion(3);
 
     this.userDao = new BaseDAO(User, this.sqldb);
     this.recordDao = new BaseDAO(Record, this.sqldb);

@@ -5,7 +5,7 @@ export class Record {
   @id({ name: 'id', dbtype: 'INTEGER NOT NULL' })
   id: number = 0;
 
-  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL UNIQUE' })
+  @field({ name: 'user_id', dbtype: 'TEXT NOT NULL' })
   userId: string = '';
 
   @field({ name: 'record_id', dbtype: 'TEXT NOT NULL' })
