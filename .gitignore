@@ -118,3 +118,4 @@ dist
 .tmp
 data/
 built/
+tmp/
