@@ -89,9 +89,9 @@ export class TurnipsDb {
       .filter(async (user) => {
         let record = await this.getRecord(user.userId, recordDate);
         if (record != undefined) {
-          return checkBellExists(record, kind)
+          return !checkBellExists(record, kind)
         }
-        return false;
+        return true;
       });
   }
 
