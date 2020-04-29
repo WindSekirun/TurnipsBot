@@ -4568,10 +4568,10 @@ sqlite3@^4.1.1, sqlite3@^4.2.0:
     nan "^2.12.1"
     node-pre-gyp "^0.11.0"
 
-sqlite3orm@^2.4.16:
-  version "2.4.16"
-  resolved "https://registry.yarnpkg.com/sqlite3orm/-/sqlite3orm-2.4.16.tgz#db1b081f1e9045cf0558de40943bc1c2e8de2fab"
-  integrity sha512-+FtLobEOgdgfAhuTwUOfd6JGIVAUunfjVbZ8Z4SXS0Bz0OXchis9NPFq/P+L4QZ05Vq2PgZj4lZTQTxyiye0Lg==
+sqlite3orm@^2.4.17:
+  version "2.4.17"
+  resolved "https://registry.yarnpkg.com/sqlite3orm/-/sqlite3orm-2.4.17.tgz#4d049b1f1fd74992d994be2ba29306c9addc94ed"
+  integrity sha512-TZzugrqkrPUjKE3PdkWxBYn4SLLyKI/QOtmCSnU9aQofsIGTKgB6F5GCMaJsJurtyUJ3XDg2FkcHdJGzkVEG0g==
   dependencies:
     debug "^4.1.1"
     reflect-metadata "^0.1.13"
