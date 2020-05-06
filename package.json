@@ -34,7 +34,7 @@
     "@types/request-promise-native": "^1.0.17",
     "jest-playback": "^2.0.2",
     "jest-serial-runner": "^1.1.0",
-    "ts-jest": "^25.4.0"
+    "ts-jest": "^25.5.0"
   },
   "scripts": {
     "start": "ts-node src/Index.ts",
