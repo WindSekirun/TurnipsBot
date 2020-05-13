@@ -22,7 +22,7 @@
     "sqlite3": "^4.2.0",
     "sqlite3orm": "^2.4.16",
     "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.31",
