@@ -4541,10 +4541,10 @@ sqlite3@^4.2.0:
     nan "^2.12.1"
     node-pre-gyp "^0.11.0"
 
-sqlite3orm@^2.4.18:
-  version "2.4.18"
-  resolved "https://registry.yarnpkg.com/sqlite3orm/-/sqlite3orm-2.4.18.tgz#94e63dcea792a93c47948233760dd7bf362819c8"
-  integrity sha512-MYMBFftpBtzADiI9h6EJZzCoz3W1W/mU0AdPVZPMRZFrpaa3ElsfupjsktKoB4dCGq9UHIlSE/XPQUs97SSJ3Q==
+sqlite3orm@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/sqlite3orm/-/sqlite3orm-2.5.0.tgz#0f83ab02f6171e03f76168cceebb67d77a6613a4"
+  integrity sha512-Eh6qC0rmyypnC4JX0d/tL6UVNsRvSfGoKSZLny38M/9V737tO7HDI/VmVrSHY8fu9NoE3tlzmzxH/G2SbPz4hw==
   dependencies:
     debug "^4.1.1"
     reflect-metadata "^0.1.13"
