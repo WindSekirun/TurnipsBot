@@ -604,10 +604,10 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
-"@types/death@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@types/death/-/death-1.1.0.tgz#314e4137a3ad71a30089271f340831f90190e007"
-  integrity sha512-etjyR7/GmUH8W4LWRQ1JsUex7RefjHqjNzPlCD/rZg0jB6pfARp9Exk9nCqPvo7H2YXXdAMtfLyilCnSo3/TpA==
+"@types/death@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/death/-/death-1.1.1.tgz#698a62ff197cfcbf370e69cd5301a5cad1044a90"
+  integrity sha512-SRZdlsuCMY8iJQQ5CPRHivXR9+mw25peEG9hLEg/styIQ0jiXO90CrNhf7aGFaMFc8wPA+R87QT+AY15u3mO/g==
 
 "@types/debug@^4.1.5":
   version "4.1.5"
