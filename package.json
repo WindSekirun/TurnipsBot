@@ -21,7 +21,7 @@
     "request-promise-native": "^1.0.8",
     "sqlite3": "^4.2.0",
     "sqlite3orm": "^2.5.0",
-    "ts-node": "^8.10.2",
+    "ts-node": "^9.0.0",
     "typescript": "^3.9.7"
   },
   "devDependencies": {
