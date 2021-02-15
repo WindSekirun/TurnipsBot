@@ -663,10 +663,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node-telegram-bot-api@^0.50.2":
-  version "0.50.2"
-  resolved "https://registry.yarnpkg.com/@types/node-telegram-bot-api/-/node-telegram-bot-api-0.50.2.tgz#b25b83f39e4f869b4322b1c709aa92fb0256f5c5"
-  integrity sha512-/kXQQd9UcFDqcOBPSL3qzRjhhzDoOxYDaiT4JLf78D5r05kXqyc6NNjTtRKOpFHGmh7Y6CY3gcHuIMFCUFpb1w==
+"@types/node-telegram-bot-api@^0.51.1":
+  version "0.51.1"
+  resolved "https://registry.yarnpkg.com/@types/node-telegram-bot-api/-/node-telegram-bot-api-0.51.1.tgz#adc9cf48e3dd3a35569c01de28a7c71aae40fc75"
+  integrity sha512-1gPuW543XUgJBUCsNx6x+iJ3DuHNfU6edtsLu/0J0jCfDvQtA511BmHiODt+qre09AVIUCpd+vaf02/URS3QZQ==
   dependencies:
     "@types/node" "*"
     "@types/request" "*"
